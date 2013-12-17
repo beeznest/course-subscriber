@@ -15,7 +15,7 @@ class Course
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="id")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -72,11 +72,11 @@ class Course
 
     public function __toString()
     {
-        return $this->getId();
+        return $this->getCourseCode();
     }
 
     /**
-     * @return mixed
+     * @return Phase
      */
     public function getPhase()
     {
@@ -84,7 +84,7 @@ class Course
     }
 
     /**
-     * @param $phase
+     * @param Phase $phase
      */
     public function setPhase($phase)
     {

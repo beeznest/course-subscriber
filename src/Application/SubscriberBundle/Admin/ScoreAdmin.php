@@ -35,6 +35,7 @@ class ScoreAdmin extends Admin
             ->with('General')
             ->add('score')
             ->add('status')
+            ->add('concept')
             ->end()
         ;
     }

@@ -166,7 +166,7 @@ class Student
      */
     public function __toString()
     {
-        return $this->getUsername();
+        return $this->getFirstname();
     }
 
     /**

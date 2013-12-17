@@ -55,6 +55,14 @@ class Phase
     }
 
     /**
+     * @return int
+     */
+    public function __toString()
+    {
+        return $this->getDescription();
+    }
+
+    /**
      * Get id
      *
      * @return integer

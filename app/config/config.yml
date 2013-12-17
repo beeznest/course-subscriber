@@ -207,8 +207,6 @@ services:
           - { name: sonata.admin, manager_type: orm, group: Course, label: Course}
         arguments: [null, Application\SubscriberBundle\Entity\Course, ApplicationSubscriberBundle:CourseAdmin]
 
-
-
     application.subscriber.admin.session:
         class: Application\SubscriberBundle\Admin\SessionAdmin
         tags:
@@ -220,3 +218,10 @@ services:
         tags:
           - { name: sonata.admin, manager_type: orm, group: Phase, label: Phase}
         arguments: [null, Application\SubscriberBundle\Entity\Phase, ApplicationSubscriberBundle:PhaseAdmin]
+
+
+    application.subscriber.admin.subscription:
+        class: Application\SubscriberBundle\Admin\SubscriptionAdmin
+        tags:
+          - { name: sonata.admin, manager_type: orm, group: Subscription, label: Subscription}
+        arguments: [null, Application\SubscriberBundle\Entity\Subscription, ApplicationSubscriberBundle:SubscriptionAdmin]

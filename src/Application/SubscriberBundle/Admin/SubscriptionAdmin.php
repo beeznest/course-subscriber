@@ -9,7 +9,7 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 use Knp\Menu\ItemInterface as MenuItemInterface;
 
-class CourseAdmin extends Admin
+class SubscriptionAdmin extends Admin
 {
     /**
      * @param \Sonata\AdminBundle\Show\ShowMapper $showMapper
@@ -19,9 +19,8 @@ class CourseAdmin extends Admin
     protected function configureShowField(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('course_code', 'text')
-            ->add('sequence')
             ->add('status')
+            ->add('total_score', 'text')
         ;
     }
 
@@ -34,10 +33,10 @@ class CourseAdmin extends Admin
     {
         $formMapper
             ->with('General')
-            ->add('course_code', 'text')
-            ->add('sequence')
+            ->add('student')
+            ->add('session')
             ->add('status')
-            ->add('phase')
+            ->add('total_score', 'text')
             ->end()
         ;
     }
@@ -51,9 +50,8 @@ class CourseAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('id')
-            ->add('course_code', 'text')
-            ->add('sequence')
             ->add('status')
+            ->add('total_score')
             ->add('_action', 'actions', array(
                     'actions' => array(
                         'view' => array(),
@@ -72,9 +70,8 @@ class CourseAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            //->add('course_code')
-            ->add('sequence')
             ->add('status')
+            //->add('total_score')
             //->add('tags', null, array('field_options' => array('expanded' => true, 'multiple' => true)))
         ;
     }

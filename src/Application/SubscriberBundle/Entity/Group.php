@@ -42,6 +42,21 @@ class Group
      */
     private $createdAt;
 
+    /**
+     *
+     */
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime("now");
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getName();
+    }
 
     /**
      * Get id

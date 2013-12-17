@@ -15,7 +15,7 @@ class Session
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="id")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -64,11 +64,14 @@ class Session
     private $createdAt;
 
     /**
-     * @@ORM\ManyToOne(targetEntity="Course")
+     * @ORM\ManyToOne(targetEntity="Course")
      * @ORM\JoinColumn(name="course_id", referencedColumnName="id")
      */
     private $course;
 
+    /**
+     *
+     */
     public function __construct()
     {
         $this->createdAt = new \DateTime("now");
@@ -81,16 +84,14 @@ class Session
     {
         return $this->getId();
     }
-
-    /**
-     */
+    
     public function getCourse()
     {
         return $this->course;
     }
 
     /**
-     * @param $course
+     * @param Course $course
      */
     public function setCourse($course)
     {

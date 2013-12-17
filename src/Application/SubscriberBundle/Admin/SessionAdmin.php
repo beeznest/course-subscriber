@@ -37,7 +37,7 @@ class SessionAdmin extends Admin
             ->add('started_at', 'datetime')
             ->add('finished_at', 'datetime')
             ->add('status')
-            //->add('created_at', 'datetime')
+            ->add('course')
             ->end()
         ;
     }
@@ -51,8 +51,8 @@ class SessionAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('id')
-            ->add('started_at')
-            ->add('finished_at')
+            //->add('started_at')
+            //->add('finished_at')
             ->add('status')
             ->add('_action', 'actions', array(
                     'actions' => array(
@@ -72,8 +72,7 @@ class SessionAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('started_at')
-            ->add('finished_at')
+            ->add('status')
             //->add('tags', null, array('field_options' => array('expanded' => true, 'multiple' => true)))
         ;
     }

@@ -56,9 +56,39 @@ class Score
      */
     private $createdAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Concept")
+     * @ORM\JoinColumn(name="concept_id", referencedColumnName="id")
+     */
+    private $concept;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime("now");
+    }
+
+    /**
+     * @return int
+     */
+    public function __toString()
+    {
+        return $this->getScore();
+    }
+
+    /**
+     * @return Concept
+     */
+    public function getConcept()
+    {
+        return $this->concept;
+    }
+
+    /**
+     * @param Concept $concept
+     */
+    public function setConcept($concept)
+    {
+        $this->concept = $concept;
     }
 
 
