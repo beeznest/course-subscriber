@@ -15,9 +15,9 @@ class Student
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="bigint", precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -147,6 +147,43 @@ class Student
      */
     private $registrationId;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Registration")
+     * @ORM\JoinColumn(name="registration_id", referencedColumnName="id")
+     */
+    private $registration;
+
+    /**
+     *
+     */
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime("now");
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getUsername();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRegistration()
+    {
+        return $this->registration;
+    }
+
+    /**
+     * @param $registration
+     */
+    public function setRegistration($registration)
+    {
+        $this->registration = $registration;
+    }
 
     /**
      * Get id

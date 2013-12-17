@@ -63,7 +63,6 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
 
-
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
@@ -169,3 +168,11 @@ sonata_doctrine_orm_admin:
                 bigint:     SonataAdminBundle:CRUD:base_show_field.html.twig
                 integer:    SonataAdminBundle:CRUD:base_show_field.html.twig
                 decimal:    SonataAdminBundle:CRUD:base_show_field.html.twig
+
+services:
+    application.subscriber.admin.student:
+        class: Application\SubscriberBundle\Admin\StudentAdmin
+        tags:
+          - { name: sonata.admin, manager_type: orm, group: Students, label: Student}
+        arguments: [null, Application\SubscriberBundle\Entity\Student, ApplicationSubscriberBundle:StudentAdmin]
+
