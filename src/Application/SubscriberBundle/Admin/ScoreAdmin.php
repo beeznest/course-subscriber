@@ -9,7 +9,7 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 use Knp\Menu\ItemInterface as MenuItemInterface;
 
-class SessionAdmin extends Admin
+class ScoreAdmin extends Admin
 {
     /**
      * @param \Sonata\AdminBundle\Show\ShowMapper $showMapper
@@ -19,8 +19,7 @@ class SessionAdmin extends Admin
     protected function configureShowField(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('started_at')
-            ->add('finished_at')
+            ->add('score')
             ->add('status')
         ;
     }
@@ -34,10 +33,8 @@ class SessionAdmin extends Admin
     {
         $formMapper
             ->with('General')
-            ->add('started_at', 'datetime')
-            ->add('finished_at', 'datetime')
+            ->add('score')
             ->add('status')
-            //->add('created_at', 'datetime')
             ->end()
         ;
     }
@@ -51,8 +48,7 @@ class SessionAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('id')
-            ->add('started_at')
-            ->add('finished_at')
+            ->add('score')
             ->add('status')
             ->add('_action', 'actions', array(
                     'actions' => array(
@@ -72,8 +68,8 @@ class SessionAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('started_at')
-            ->add('finished_at')
+            ->add('score')
+            ->add('status')
             //->add('tags', null, array('field_options' => array('expanded' => true, 'multiple' => true)))
         ;
     }

@@ -35,7 +35,7 @@ class ConceptAdmin extends Admin
             ->with('General')
             ->add('name')
             ->add('status')
-            ->add('created_at', 'datetime')
+            //->add('created_at', 'datetime')
             ->end()
         ;
     }

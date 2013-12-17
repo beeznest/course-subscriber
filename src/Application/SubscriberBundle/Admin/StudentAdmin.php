@@ -46,8 +46,6 @@ class StudentAdmin extends Admin
             ->with('tab 2')
             ->add('nationality')
             ->end()
-            ->add('created_at', 'datetime')
-            ->end()
         ;
     }
 

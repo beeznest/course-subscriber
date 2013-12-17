@@ -188,6 +188,12 @@ services:
           - { name: sonata.admin, manager_type: orm, group: Students, label: Lms}
         arguments: [null, Application\SubscriberBundle\Entity\Lms, ApplicationSubscriberBundle:LmsAdmin]
 
+    application.subscriber.admin.score:
+        class: Application\SubscriberBundle\Admin\ScoreAdmin
+        tags:
+          - { name: sonata.admin, manager_type: orm, group: Students, label: Score}
+        arguments: [null, Application\SubscriberBundle\Entity\Score, ApplicationSubscriberBundle:ScoreAdmin]
+
 
     application.subscriber.admin.concept:
         class: Application\SubscriberBundle\Admin\ConceptAdmin
