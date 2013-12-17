@@ -5,12 +5,12 @@ namespace Application\SubscriberBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Registration
+ * Course
  *
- * @ORM\Table(name="registration")
+ * @ORM\Table(name="course")
  * @ORM\Entity
  */
-class Registration
+class Course
 {
     /**
      * @var integer
@@ -24,16 +24,23 @@ class Registration
     /**
      * @var integer
      *
-     * @ORM\Column(name="lms_id", type="integer", precision=0, scale=0, nullable=true, unique=false)
+     * @ORM\Column(name="phase_id", type="integer", precision=0, scale=0, nullable=true, unique=false)
      */
-    private $lmsId;
+    private $phaseId;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="group_id", type="integer", precision=0, scale=0, nullable=true, unique=false)
+     * @ORM\Column(name="course_code", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
      */
-    private $groupId;
+    private $courseCode;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sequence", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
+     */
+    private $sequence;
 
     /**
      * @var string
@@ -50,17 +57,14 @@ class Registration
     private $createdAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Group")
-     * @ORM\JoinColumn(name="group_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Phase")
+     * @ORM\JoinColumn(name="phase_id", referencedColumnName="id")
      */
-    private $group;
+    private $phase;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Lms")
-     * @ORM\JoinColumn(name="lms_id", referencedColumnName="id")
+     *
      */
-    private $lms;
-
     public function __construct()
     {
         $this->createdAt = new \DateTime("now");
@@ -71,24 +75,20 @@ class Registration
         return $this->getId();
     }
 
-    public function getGroup()
+    /**
+     * @return mixed
+     */
+    public function getPhase()
     {
-        return $this->group;
+        return $this->phase;
     }
 
-    public function setGroup($group)
+    /**
+     * @param $phase
+     */
+    public function setPhase($phase)
     {
-        $this->group = $group;
-    }
-
-    public function setLms($lms)
-    {
-        $this->lms = $lms;
-    }
-
-    public function getLms()
-    {
-        return $this->lms;
+        $this->phase = $phase;
     }
 
     /**
@@ -102,56 +102,79 @@ class Registration
     }
 
     /**
-     * Set lmsId
+     * Set phaseId
      *
-     * @param integer $lmsId
-     * @return Registration
+     * @param integer $phaseId
+     * @return Course
      */
-    public function setLmsId($lmsId)
+    public function setPhaseId($phaseId)
     {
-        $this->lmsId = $lmsId;
+        $this->phaseId = $phaseId;
 
         return $this;
     }
 
     /**
-     * Get lmsId
+     * Get phaseId
      *
      * @return integer
      */
-    public function getLmsId()
+    public function getPhaseId()
     {
-        return $this->lmsId;
+        return $this->phaseId;
     }
 
     /**
-     * Set groupId
+     * Set courseCode
      *
-     * @param integer $groupId
-     * @return Registration
+     * @param string $courseCode
+     * @return Course
      */
-    public function setGroupId($groupId)
+    public function setCourseCode($courseCode)
     {
-        $this->groupId = $groupId;
+        $this->courseCode = $courseCode;
 
         return $this;
     }
 
     /**
-     * Get groupId
+     * Get courseCode
      *
-     * @return integer
+     * @return string
      */
-    public function getGroupId()
+    public function getCourseCode()
     {
-        return $this->groupId;
+        return $this->courseCode;
+    }
+
+    /**
+     * Set sequence
+     *
+     * @param string $sequence
+     * @return Course
+     */
+    public function setSequence($sequence)
+    {
+        $this->sequence = $sequence;
+
+        return $this;
+    }
+
+    /**
+     * Get sequence
+     *
+     * @return string
+     */
+    public function getSequence()
+    {
+        return $this->sequence;
     }
 
     /**
      * Set status
      *
      * @param string $status
-     * @return Registration
+     * @return Course
      */
     public function setStatus($status)
     {
@@ -174,7 +197,7 @@ class Registration
      * Set createdAt
      *
      * @param \DateTime $createdAt
-     * @return Registration
+     * @return Course
      */
     public function setCreatedAt($createdAt)
     {

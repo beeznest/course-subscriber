@@ -15,9 +15,9 @@ class Subscription
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -56,6 +56,56 @@ class Subscription
      */
     private $createdAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Student")
+     * @ORM\JoinColumn(name="student_id", referencedColumnName="id")
+     */
+    private $student;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Session")
+     * @ORM\JoinColumn(name="session_id", referencedColumnName="id")
+     */
+    private $session;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime("now");
+    }
+
+    /**
+     * @return int
+     */
+    public function __toString()
+    {
+        return $this->getId();
+    }
+
+    public function getStudent()
+    {
+        return $this->student;
+    }
+
+    /**
+     * @param $student
+     */
+    public function setStudent($student)
+    {
+        $this->student = $student;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSession()
+    {
+        return $this->session;
+    }
+
+    public function setSession($session)
+    {
+        $this->session = $session;
+    }
 
     /**
      * Get id

@@ -176,3 +176,41 @@ services:
           - { name: sonata.admin, manager_type: orm, group: Students, label: Student}
         arguments: [null, Application\SubscriberBundle\Entity\Student, ApplicationSubscriberBundle:StudentAdmin]
 
+    application.subscriber.admin.group:
+        class: Application\SubscriberBundle\Admin\GroupAdmin
+        tags:
+          - { name: sonata.admin, manager_type: orm, group: Students, label: Group}
+        arguments: [null, Application\SubscriberBundle\Entity\Group, ApplicationSubscriberBundle:GroupAdmin]
+
+    application.subscriber.admin.lms:
+        class: Application\SubscriberBundle\Admin\LmsAdmin
+        tags:
+          - { name: sonata.admin, manager_type: orm, group: Students, label: Lms}
+        arguments: [null, Application\SubscriberBundle\Entity\Lms, ApplicationSubscriberBundle:LmsAdmin]
+
+
+    application.subscriber.admin.concept:
+        class: Application\SubscriberBundle\Admin\ConceptAdmin
+        tags:
+          - { name: sonata.admin, manager_type: orm, group: Concepts, label: Concept}
+        arguments: [null, Application\SubscriberBundle\Entity\Concept, ApplicationSubscriberBundle:ConceptAdmin]
+
+    application.subscriber.admin.course:
+        class: Application\SubscriberBundle\Admin\CourseAdmin
+        tags:
+          - { name: sonata.admin, manager_type: orm, group: Course, label: Course}
+        arguments: [null, Application\SubscriberBundle\Entity\Course, ApplicationSubscriberBundle:CourseAdmin]
+
+
+
+    application.subscriber.admin.session:
+        class: Application\SubscriberBundle\Admin\SessionAdmin
+        tags:
+          - { name: sonata.admin, manager_type: orm, group: Session, label: Session}
+        arguments: [null, Application\SubscriberBundle\Entity\Session, ApplicationSubscriberBundle:SessionAdmin]
+
+    application.subscriber.admin.phase:
+        class: Application\SubscriberBundle\Admin\PhaseAdmin
+        tags:
+          - { name: sonata.admin, manager_type: orm, group: Phase, label: Phase}
+        arguments: [null, Application\SubscriberBundle\Entity\Phase, ApplicationSubscriberBundle:PhaseAdmin]

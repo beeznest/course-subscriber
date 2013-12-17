@@ -17,16 +17,16 @@ class Concept
      *
      * @ORM\Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name_id", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
+     * @ORM\Column(name="name", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
      */
-    private $nameId;
+    private $name;
 
     /**
      * @var string
@@ -42,7 +42,6 @@ class Concept
      */
     private $createdAt;
 
-
     /**
      * Get id
      *
@@ -54,26 +53,26 @@ class Concept
     }
 
     /**
-     * Set nameId
+     * Set name
      *
-     * @param string $nameId
+     * @param string $name
      * @return Concept
      */
-    public function setNameId($nameId)
+    public function setName($name)
     {
-        $this->nameId = $nameId;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get nameId
+     * Get name
      *
      * @return string
      */
-    public function getNameId()
+    public function getName()
     {
-        return $this->nameId;
+        return $this->name;
     }
 
     /**
