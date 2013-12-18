@@ -12,18 +12,23 @@ Installation
 
 Check web/config.php
 
-Create database in mysql.
-
-Update database with entities:
-php app/console doctrine:schema:update --force
-
-Generate resources from bundles/xxx/Resources/public/ to the web/bundles/xxx/
-php app/console assets:install web
-
-Setup permissions.
+Setup directory permissions.
 http://symfony.com/doc/current/book/installation.html#configuration-and-setup
 
-sudo chmod -R 777 app/cache app/logs // or sudo chown -R www-data app/cache app/logs
+Update vendors.
+composer update
+
+Create database.
+Rename parameters.yml.dist to app/config/parameters.yml and update the DB credentials.
+
+Update the DB with the Doctrine2 entities:
+php app/console doctrine:schema:update --force
+
+Create an admin user:
+php app/console fos:user:create admin admin@example.com mypassword --super-admin
+
+Generate resources, moves files from bundles/xxx/Resources/public/ to web/bundles/xxx/
+php app/console assets:install web
 
 Clear cache:
 php app/console cache:clear --env=dev
@@ -33,6 +38,3 @@ Set up your ACL's.
 > app/console init:acl
 > app/console sonata:admin:setup-acl
 > app/console sonata:admin:generate-object-acl
-
-Guide used:
-http://domitable.com/content/getting-started-symfony-23-sonata-admin-user-bundles
