@@ -1,3 +1,10 @@
+root:
+    path: /
+    defaults:
+        _controller: FrameworkBundle:Redirect:urlRedirect
+        path: /admin
+        permanent: false
+
 admin:
     resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
     prefix: /admin
@@ -10,6 +17,8 @@ _sonata_admin:
 # error-prevention
 homepage:
     pattern: /
+    defaults:
+            path: /admin/dashboard
 
 application_subscriber:
     resource: "@ApplicationSubscriberBundle/Controller/"
