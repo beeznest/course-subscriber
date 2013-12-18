@@ -101,7 +101,7 @@ sonata_block:
 
 sonata_admin:
     title:      Admin Panel
-    title_logo: /bundles/sonataadmin/logo_title.png
+    title_logo: bundles/applicationsubscriber/images/logo.jpg
     templates:
         # default global templates
         layout:  SonataAdminBundle::standard_layout.html.twig
