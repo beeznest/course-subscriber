@@ -15,7 +15,7 @@ class Session
     /**
      * @var integer
      *
-     * @ORM\Column(name="id")
+     * @ORM\Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -84,7 +84,7 @@ class Session
     {
         return $this->getId();
     }
-    
+
     public function getCourse()
     {
         return $this->course;

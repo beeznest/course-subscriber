@@ -35,16 +35,33 @@ class StudentAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('General')
+            ->with('Profile')
             ->add('firstname')
             ->add('lastname')
-            ->add('gender')
+            //->add('gender')
+            ->add('gender', 'choice', array(
+                'choices' => array('m' => 'male', 'f' => 'female'),
+                'required' => false,
+                'translation_domain' => $this->getTranslationDomain()
+            ))
+            ->add('date_of_birth', 'birthday')
+            ->add('nationality', 'country')
+            ->add('occupation')
+            ->with('Contact info')
+            ->add('phone')
+            ->add('locality')
+            ->add('region')
+            ->add('country', 'country')
             ->end()
-            ->with('tab 1')
-            ->add('date_of_birth', 'datetime')
-            ->end()
-            ->with('tab 2')
-            ->add('nationality')
+
+            ->with('Account')
+            ->add('email')
+            ->add('username')
+            ->add('password')
+            ->with('Extra')
+            ->add('id_num', 'text')
+            ->add('status')
+
             ->end()
         ;
     }

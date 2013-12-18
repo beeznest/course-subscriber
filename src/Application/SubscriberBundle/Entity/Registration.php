@@ -68,7 +68,7 @@ class Registration
 
     public function __toString()
     {
-        return $this->getId();
+        return $this->getStatus();
     }
 
     public function getGroup()
