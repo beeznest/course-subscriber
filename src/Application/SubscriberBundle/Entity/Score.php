@@ -91,7 +91,6 @@ class Score
         $this->concept = $concept;
     }
 
-
     /**
      * Get id
      *

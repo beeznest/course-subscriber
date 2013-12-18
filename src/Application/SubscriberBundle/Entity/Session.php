@@ -78,13 +78,16 @@ class Session
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function __toString()
     {
-        return $this->getId();
+        return $this->getStatus();
     }
 
+    /**
+     * @return Course
+     */
     public function getCourse()
     {
         return $this->course;

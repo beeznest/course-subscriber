@@ -61,21 +61,33 @@ class Registration
      */
     private $lms;
 
+    /**
+     *
+     */
     public function __construct()
     {
         $this->createdAt = new \DateTime("now");
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->getStatus();
     }
 
+    /**
+     * @return Group
+     */
     public function getGroup()
     {
         return $this->group;
     }
 
+    /**
+     * @param Group $group
+     */
     public function setGroup($group)
     {
         $this->group = $group;

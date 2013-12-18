@@ -170,7 +170,7 @@ class Student
     }
 
     /**
-     * @return mixed
+     * @return Registration
      */
     public function getRegistration()
     {
@@ -178,7 +178,7 @@ class Student
     }
 
     /**
-     * @param $registration
+     * @param Registration $registration
      */
     public function setRegistration($registration)
     {

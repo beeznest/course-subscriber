@@ -81,13 +81,16 @@ class Subscription
         return $this->getTotalScore();
     }
 
+    /**
+     * @return Student
+     */
     public function getStudent()
     {
         return $this->student;
     }
 
     /**
-     * @param $student
+     * @param Student $student
      */
     public function setStudent($student)
     {
@@ -95,13 +98,16 @@ class Subscription
     }
 
     /**
-     * @return mixed
+     * @return Session
      */
     public function getSession()
     {
         return $this->session;
     }
 
+    /**
+     * @param Session $session
+     */
     public function setSession($session)
     {
         $this->session = $session;
