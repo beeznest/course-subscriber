@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "2b0ab31032c66453d42c3236b8a94db6",
+    "hash": "c661c468932959f21f27593f5ac6e6c9",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1750,6 +1750,63 @@
             "time": "2013-03-01 17:24:02"
         },
         {
+            "name": "sonata-project/timeline-bundle",
+            "version": "dev-master",
+            "target-dir": "Sonata/TimelineBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sonata-project/SonataTimelineBundle.git",
+                "reference": "b1f8e7f32694a534ddedfbd9da741a721055d56c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sonata-project/SonataTimelineBundle/zipball/b1f8e7f32694a534ddedfbd9da741a721055d56c",
+                "reference": "b1f8e7f32694a534ddedfbd9da741a721055d56c",
+                "shasum": ""
+            },
+            "require": {
+                "sonata-project/block-bundle": "~2.2,>=2.2.1",
+                "sonata-project/core-bundle": "~2.2",
+                "stephpy/timeline": "~1.0@dev",
+                "stephpy/timelinebundle": "2.0.*@dev"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Sonata\\TimelineBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas Rabaix",
+                    "email": "thomas.rabaix@sonata-project.org",
+                    "homepage": "http://sonata-project.org"
+                },
+                {
+                    "name": "Sonata Community",
+                    "homepage": "https://github.com/sonata-project/SonataTimelineBundle/contributors"
+                }
+            ],
+            "description": "Symfony SonataTimelineBundle ~ integrate SpyTimelineBundle into Sonata",
+            "homepage": "http://sonata-project.org/bundles/timeline",
+            "keywords": [
+                "date",
+                "sonata",
+                "time",
+                "wall"
+            ],
+            "time": "2013-12-17 11:48:32"
+        },
+        {
             "name": "sonata-project/user-bundle",
             "version": "dev-master",
             "target-dir": "Sonata/UserBundle",
@@ -1813,6 +1870,135 @@
                 "user"
             ],
             "time": "2013-12-17 13:43:36"
+        },
+        {
+            "name": "stephpy/TimelineBundle",
+            "version": "dev-master",
+            "target-dir": "Spy/TimelineBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stephpy/TimelineBundle.git",
+                "reference": "b25601473a9087eb18f15ec9a11abf05094a77f6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stephpy/TimelineBundle/zipball/b25601473a9087eb18f15ec9a11abf05094a77f6",
+                "reference": "b25601473a9087eb18f15ec9a11abf05094a77f6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "stephpy/timeline": "1.0.*",
+                "symfony/framework-bundle": "2.*",
+                "symfony/options-resolver": "2.*"
+            },
+            "replace": {
+                "stephpy/timelinebundle": "self.version"
+            },
+            "require-dev": {
+                "atoum/atoum-bundle": "dev-master",
+                "doctrine/orm": "2.*",
+                "symfony/console": "2.*"
+            },
+            "suggest": {
+                "doctrine/mongodb-odm-bundle": "Use doctrine ODM driver",
+                "doctrine/orm": "Use doctrine ORM driver",
+                "snc/redis-bundle": "Use redis driver",
+                "symfony/console": "List spreads and deploy timelines via a command"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Spy\\TimelineBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stéphane PY",
+                    "email": "py.stephane1@gmail.com"
+                },
+                {
+                    "name": "Community contributors",
+                    "homepage": "https://github.com/stephpy/TimelineBundle/contributors"
+                }
+            ],
+            "description": "Symfony2 bundle to make timeline",
+            "homepage": "https://github.com/stephpy/TimelineBundle",
+            "keywords": [
+                "bundle",
+                "notification",
+                "symfony",
+                "timeline"
+            ],
+            "time": "2013-11-08 15:49:58"
+        },
+        {
+            "name": "stephpy/timeline",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stephpy/timeline.git",
+                "reference": "b24dc45b2f39e9d935012b96bad253e580110df2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stephpy/timeline/zipball/b24dc45b2f39e9d935012b96bad253e580110df2",
+                "reference": "b24dc45b2f39e9d935012b96bad253e580110df2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "symfony/options-resolver": "*"
+            },
+            "require-dev": {
+                "atoum/atoum": "dev-master",
+                "knplabs/knp-components": "1.*",
+                "pimple/pimple": "*",
+                "symfony/event-dispatcher": "2.*"
+            },
+            "suggest": {
+                "ext-redis": "Redis C extension for PHP",
+                "knplabs/knp-components": "Knp Paginator",
+                "pimple/pimple": "Use ServiceLocator",
+                "predis/predis": "Redis PHP client library"
+            },
+            "type": "standalone",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Spy\\Timeline": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Community contributors",
+                    "homepage": "https://github.com/stephpy/timeline/contributors"
+                }
+            ],
+            "description": "Standalone library to make timeline",
+            "homepage": "https://github.com/stephpy/timeline",
+            "keywords": [
+                "standalone",
+                "timeline"
+            ],
+            "time": "2013-12-15 15:51:27"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2311,7 +2497,10 @@
         "sonata-project/doctrine-orm-admin-bundle": 20,
         "sonata-project/block-bundle": 20,
         "sonata-project/easy-extends-bundle": 20,
-        "sonata-project/user-bundle": 20
+        "sonata-project/user-bundle": 20,
+        "sonata-project/timeline-bundle": 20,
+        "stephpy/timelinebundle": 20,
+        "stephpy/timeline": 20
     },
     "platform": {
         "php": ">=5.3.3"
