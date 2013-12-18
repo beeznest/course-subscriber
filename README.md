@@ -12,14 +12,20 @@ Installation
 
 Check web/config.php
 
-create database
+Create database in mysql.
+
+Update database with entities:
 php app/console doctrine:schema:update --force
 
+Generate resources from bundles/xxx/Resources/public/ to the web/bundles/xxx/
 php app/console assets:install web
 
-sudo chmod -R 777 app/cache app/logs
-# or chown www-data
+Setup permissions.
+http://symfony.com/doc/current/book/installation.html#configuration-and-setup
 
+sudo chmod -R 777 app/cache app/logs // or sudo chown -R www-data app/cache app/logs
+
+Clear cache:
 php app/console cache:clear --env=dev
 php app/console cache:clear --env=prod
 
