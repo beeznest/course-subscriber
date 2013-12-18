@@ -1,11 +1,11 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: sonata_timeline.yml }
 
 framework:
     #esi:             ~
-    #translator:      { fallback: "%locale%" }
-    translator: ~
+    translator:      { fallback: "%locale%" }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -79,6 +79,14 @@ fos_user:
     group:
       group_class:  Application\Sonata\UserBundle\Entity\Group
 
+    profile:
+            # Authentication Form
+            form:
+                type:               fos_user_profile
+                handler:            fos_user.profile.form.handler.default
+                name:               fos_user_profile_form
+                validation_groups:  [Authentication] # Please note : this is not the default value
+
 # Sonata Configuration
 
 sonata_block:
@@ -90,6 +98,7 @@ sonata_block:
         sonata.block.service.text:
         sonata.block.service.action:
         sonata.block.service.rss:
+        sonata.timeline.block.timeline:
 
         # Some specific block from the SonataMediaBundle
         #sonata.media.block.media:
@@ -111,10 +120,29 @@ sonata_admin:
         list:    SonataAdminBundle:CRUD:list.html.twig
         show:    SonataAdminBundle:CRUD:show.html.twig
         edit:    SonataAdminBundle:CRUD:edit.html.twig
+
+        # search
+        #search:              SonataAdminBundle:Core:search.html.twig
+        #search_result_block: SonataAdminBundle:Block:block_search_result.html.twig
+
     dashboard:
         blocks:
-            # display a dashboard block
-            - { position: left, type: sonata.admin.block.admin_list }
+            -
+                position: left
+                type: sonata.admin.block.admin_list
+            -
+                position: right
+                type: sonata.block.service.text
+                settings:
+                    content: >
+                        <h2>Welcome to the Course subscriber app.</h2>
+                        <p>Try creating some users.</p>
+            -
+               position: right
+               type: sonata.timeline.block.timeline
+               settings:
+                   context: SONATA_ADMIN
+                   max_per_page: 25
     security:
         handler: sonata.admin.security.handler.acl
         # acl security information
@@ -128,7 +156,6 @@ sonata_admin:
         admin_permissions: [CREATE, LIST, DELETE, UNDELETE, EXPORT, OPERATOR, MASTER]
         # permission related to the objects
         object_permissions: [VIEW, EDIT, DELETE, UNDELETE, OPERATOR, MASTER, OWNER]
-
 
 sonata_doctrine_orm_admin:
     # default value is null, so doctrine uses the value defined in the configuration
@@ -176,17 +203,25 @@ services:
           - { name: sonata.admin, manager_type: orm, group: Students, label: Student}
         arguments: [null, Application\SubscriberBundle\Entity\Student, ApplicationSubscriberBundle:StudentAdmin]
 
-    application.subscriber.admin.group:
-        class: Application\SubscriberBundle\Admin\GroupAdmin
-        tags:
-          - { name: sonata.admin, manager_type: orm, group: Students, label: Group}
-        arguments: [null, Application\SubscriberBundle\Entity\Group, ApplicationSubscriberBundle:GroupAdmin]
 
     application.subscriber.admin.lms:
         class: Application\SubscriberBundle\Admin\LmsAdmin
         tags:
-          - { name: sonata.admin, manager_type: orm, group: Students, label: Lms}
+          - { name: sonata.admin, manager_type: orm, group: LMS, label: Lms}
         arguments: [null, Application\SubscriberBundle\Entity\Lms, ApplicationSubscriberBundle:LmsAdmin]
+
+    application.subscriber.admin.group:
+        class: Application\SubscriberBundle\Admin\GroupAdmin
+        tags:
+          - { name: sonata.admin, manager_type: orm, group: LMS, label: Group}
+        arguments: [null, Application\SubscriberBundle\Entity\Group, ApplicationSubscriberBundle:GroupAdmin]
+
+    application.subscriber.admin.registration:
+        class: Application\SubscriberBundle\Admin\RegistrationAdmin
+        tags:
+          - { name: sonata.admin, manager_type: orm, group: LMS, label: LMS registration}
+        arguments: [null, Application\SubscriberBundle\Entity\Registration, ApplicationSubscriberBundle:RegistrationAdmin]
+
 
     application.subscriber.admin.score:
         class: Application\SubscriberBundle\Admin\ScoreAdmin
@@ -218,7 +253,6 @@ services:
         tags:
           - { name: sonata.admin, manager_type: orm, group: Phase, label: Phase}
         arguments: [null, Application\SubscriberBundle\Entity\Phase, ApplicationSubscriberBundle:PhaseAdmin]
-
 
     application.subscriber.admin.subscription:
         class: Application\SubscriberBundle\Admin\SubscriptionAdmin
