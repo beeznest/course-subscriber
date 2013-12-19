@@ -51,6 +51,13 @@ app/console sonata:admin:setup-acl
 app/console sonata:admin:generate-object-acl
 ```
 
+Translations:
+After adding translations in the src/Application/SubscriberBundle/Resources/translations
+you need to clean your cache:
+
+```
+php app/console cache:clear
+```
 Misc
 ====
 
