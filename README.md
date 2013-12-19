@@ -50,3 +50,8 @@ app/console init:acl
 app/console sonata:admin:setup-acl
 app/console sonata:admin:generate-object-acl
 ```
+
+Misc
+====
+
+[![Build Status](https://api.travis-ci.org/beeznest/course-subscriber.png)](https://api.travis-ci.org/beeznest/course-subscriber)
