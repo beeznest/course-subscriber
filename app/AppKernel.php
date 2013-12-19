@@ -28,7 +28,6 @@ class AppKernel extends Kernel
             new Sonata\CoreBundle\SonataCoreBundle(),
             new Sonata\BlockBundle\SonataBlockBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
-
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
 
             // Then SonataAdminBundle
@@ -44,7 +43,11 @@ class AppKernel extends Kernel
             // SubscriberBundle
             new Application\SubscriberBundle\ApplicationSubscriberBundle(),
 
-            new Sonata\TimelineBundle\SonataTimelineBundle()
+            // Timeline - sonata
+            new Sonata\TimelineBundle\SonataTimelineBundle(),
+
+            new Sonata\IntlBundle\SonataIntlBundle(),
+            new JMS\TranslationBundle\JMSTranslationBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

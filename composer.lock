@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "c661c468932959f21f27593f5ac6e6c9",
+    "hash": "4c2055dd357841e2adac28745ed830f3",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -793,6 +793,80 @@
             "time": "2013-11-27 22:51:13"
         },
         {
+            "name": "jms/translation-bundle",
+            "version": "dev-master",
+            "target-dir": "JMS/TranslationBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/schmittjoh/JMSTranslationBundle.git",
+                "reference": "8e17374e686f20e28fe00246f750030a47fbbbb2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/schmittjoh/JMSTranslationBundle/zipball/8e17374e686f20e28fe00246f750030a47fbbbb2",
+                "reference": "8e17374e686f20e28fe00246f750030a47fbbbb2",
+                "shasum": ""
+            },
+            "require": {
+                "nikic/php-parser": "0.9.2",
+                "symfony/console": "*",
+                "symfony/framework-bundle": "~2.1"
+            },
+            "conflict": {
+                "twig/twig": "1.10.2"
+            },
+            "require-dev": {
+                "jms/di-extra-bundle": ">=1.1",
+                "sensio/framework-extra-bundle": "*",
+                "symfony/browser-kit": "*",
+                "symfony/class-loader": "*",
+                "symfony/css-selector": "*",
+                "symfony/finder": "*",
+                "symfony/form": "*",
+                "symfony/process": "*",
+                "symfony/security": "*",
+                "symfony/twig-bundle": "*",
+                "symfony/validator": "*",
+                "symfony/yaml": "*"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "JMS\\TranslationBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache2"
+            ],
+            "authors": [
+                {
+                    "name": "Johannes M. Schmitt",
+                    "email": "schmittjoh@gmail.com",
+                    "homepage": "http://jmsyst.com",
+                    "role": "Developer of wrapped JMSSerializerBundle"
+                }
+            ],
+            "description": "Puts the Symfony2 Translation Component on steroids",
+            "homepage": "http://jmsyst.com/bundles/JMSTranslationBundle",
+            "keywords": [
+                "extract",
+                "extraction",
+                "i18n",
+                "interface",
+                "multilanguage",
+                "translation",
+                "ui",
+                "webinterface"
+            ],
+            "time": "2013-11-28 23:11:37"
+        },
+        {
             "name": "knplabs/knp-menu",
             "version": "v1.1.2",
             "source": {
@@ -1044,6 +1118,45 @@
             "time": "2013-11-14 19:48:31"
         },
         {
+            "name": "nikic/php-parser",
+            "version": "v0.9.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nikic/PHP-Parser.git",
+                "reference": "a81cccff7f968ff6a78b5764e345db26d978f4a4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/a81cccff7f968ff6a78b5764e345db26d978f4a4",
+                "reference": "a81cccff7f968ff6a78b5764e345db26d978f4a4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PHPParser": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Nikita Popov"
+                }
+            ],
+            "description": "A PHP parser written in PHP",
+            "keywords": [
+                "parser",
+                "php"
+            ],
+            "time": "2012-07-07 20:23:25"
+        },
+        {
             "name": "psr/log",
             "version": "1.0.0",
             "source": {
@@ -1237,12 +1350,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "3ba0220a35a441da0a9fcab6bf2520d2e9d52a16"
+                "reference": "55e2676e31ed8dd50bd4eda912bce33a6a46f648"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/3ba0220a35a441da0a9fcab6bf2520d2e9d52a16",
-                "reference": "3ba0220a35a441da0a9fcab6bf2520d2e9d52a16",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/55e2676e31ed8dd50bd4eda912bce33a6a46f648",
+                "reference": "55e2676e31ed8dd50bd4eda912bce33a6a46f648",
                 "shasum": ""
             },
             "require": {
@@ -1308,7 +1421,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2013-12-17 13:45:32"
+            "time": "2013-12-19 13:40:44"
         },
         {
             "name": "sonata-project/block-bundle",
@@ -1376,17 +1489,17 @@
         },
         {
             "name": "sonata-project/core-bundle",
-            "version": "2.2.2",
+            "version": "dev-master",
             "target-dir": "Sonata/CoreBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataCoreBundle.git",
-                "reference": "accd2c305d2636b3cb20e3a0eb12501911a5dac6"
+                "reference": "6c5da368355a0012462cda3c3595dac4e34635c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/accd2c305d2636b3cb20e3a0eb12501911a5dac6",
-                "reference": "accd2c305d2636b3cb20e3a0eb12501911a5dac6",
+                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/6c5da368355a0012462cda3c3595dac4e34635c5",
+                "reference": "6c5da368355a0012462cda3c3595dac4e34635c5",
                 "shasum": ""
             },
             "require": {
@@ -1430,7 +1543,7 @@
             "keywords": [
                 "sonata"
             ],
-            "time": "2013-12-16 10:13:27"
+            "time": "2013-12-19 14:04:45"
         },
         {
             "name": "sonata-project/doctrine-extensions",
@@ -1702,6 +1815,70 @@
             "time": "2013-02-16 14:20:21"
         },
         {
+            "name": "sonata-project/intl-bundle",
+            "version": "dev-master",
+            "target-dir": "Sonata/IntlBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sonata-project/SonataIntlBundle.git",
+                "reference": "9e3cdbe8f77b897ceef9845f736f19346429fd79"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/9e3cdbe8f77b897ceef9845f736f19346429fd79",
+                "reference": "9e3cdbe8f77b897ceef9845f736f19346429fd79",
+                "shasum": ""
+            },
+            "require": {
+                "ext-intl": "*",
+                "symfony/dependency-injection": "~2.2",
+                "symfony/http-kernel": "~2.2",
+                "symfony/locale": "~2.2",
+                "symfony/templating": "~2.2",
+                "twig/twig": "*"
+            },
+            "require-dev": {
+                "sonata-project/user-bundle": "~2.2",
+                "symfony/security": "~2.2"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Sonata\\IntlBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas Rabaix",
+                    "email": "thomas.rabaix@sonata-project.org",
+                    "homepage": "http://sonata-project.org"
+                },
+                {
+                    "name": "Sonata Community",
+                    "homepage": "https://github.com/sonata-project/SonataIntlBundle/contributors"
+                }
+            ],
+            "description": "Symfony SonataIntlBundle",
+            "homepage": "http://sonata-project.org/bundles/intl",
+            "keywords": [
+                "date",
+                "intl",
+                "number",
+                "sonata",
+                "time"
+            ],
+            "time": "2013-12-19 09:46:09"
+        },
+        {
             "name": "sonata-project/jquery-bundle",
             "version": "1.8.3",
             "target-dir": "Sonata/jQueryBundle",
@@ -1756,12 +1933,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataTimelineBundle.git",
-                "reference": "b1f8e7f32694a534ddedfbd9da741a721055d56c"
+                "reference": "c52a367df09e1359a5007e277fbde45ccda10600"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataTimelineBundle/zipball/b1f8e7f32694a534ddedfbd9da741a721055d56c",
-                "reference": "b1f8e7f32694a534ddedfbd9da741a721055d56c",
+                "url": "https://api.github.com/repos/sonata-project/SonataTimelineBundle/zipball/c52a367df09e1359a5007e277fbde45ccda10600",
+                "reference": "c52a367df09e1359a5007e277fbde45ccda10600",
                 "shasum": ""
             },
             "require": {
@@ -1804,7 +1981,7 @@
                 "time",
                 "wall"
             ],
-            "time": "2013-12-17 11:48:32"
+            "time": "2013-12-19 14:28:15"
         },
         {
             "name": "sonata-project/user-bundle",
@@ -2496,11 +2673,14 @@
         "sonata-project/admin-bundle": 20,
         "sonata-project/doctrine-orm-admin-bundle": 20,
         "sonata-project/block-bundle": 20,
+        "sonata-project/core-bundle": 20,
         "sonata-project/easy-extends-bundle": 20,
         "sonata-project/user-bundle": 20,
         "sonata-project/timeline-bundle": 20,
         "stephpy/timelinebundle": 20,
-        "stephpy/timeline": 20
+        "stephpy/timeline": 20,
+        "sonata-project/intl-bundle": 20,
+        "jms/translation-bundle": 20
     },
     "platform": {
         "php": ">=5.3.3"
