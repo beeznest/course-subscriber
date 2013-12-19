@@ -21,6 +21,7 @@ class StudentAdmin extends Admin
         $showMapper
             ->add('firstname')
             ->add('lastname')
+            ->add('middlename')
             ->add('gender')
             ->add('date_of_birth')
             ->add('nationality')
@@ -37,6 +38,7 @@ class StudentAdmin extends Admin
         $formMapper
             ->with('Profile')
             ->add('firstname')
+            ->add('middlename')
             ->add('lastname')
             //->add('gender')
             ->add('gender', 'choice', array(
@@ -53,7 +55,6 @@ class StudentAdmin extends Admin
             ->add('region')
             ->add('country', 'country')
             ->end()
-
             ->with('Account')
             ->add('email')
             ->add('username')
@@ -61,7 +62,6 @@ class StudentAdmin extends Admin
             ->with('Extra')
             ->add('id_num', 'text')
             ->add('status')
-
             ->end()
         ;
     }
