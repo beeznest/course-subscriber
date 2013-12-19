@@ -28,12 +28,21 @@ class Student
      */
     private $firstname;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="middlename", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $middlename;
+
     /**
      * @var string
      *
      * @ORM\Column(name="lastname", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
      */
     private $lastname;
+
 
     /**
      * @var string
@@ -216,6 +225,29 @@ class Student
     public function getFirstname()
     {
         return $this->firstname;
+    }
+
+    /**
+     * Set middlename
+     *
+     * @param string $firstname
+     * @return Student
+     */
+    public function setMiddlename($middlename)
+    {
+        $this->middlename = $middlename;
+
+        return $this;
+    }
+
+    /**
+     * Get middlename
+     *
+     * @return string
+     */
+    public function getMiddlename()
+    {
+        return $this->middlename;
     }
 
     /**
