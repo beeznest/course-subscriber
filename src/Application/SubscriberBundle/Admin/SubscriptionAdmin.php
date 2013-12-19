@@ -54,7 +54,7 @@ class SubscriptionAdmin extends Admin
             ->add('total_score')
             ->add('_action', 'actions', array(
                     'actions' => array(
-                        'view' => array(),
+                        'show' => array(),
                         'edit' => array(),
                         'delete' => array(),
                     )

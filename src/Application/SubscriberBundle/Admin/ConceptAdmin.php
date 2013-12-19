@@ -51,7 +51,7 @@ class ConceptAdmin extends Admin
             ->add('name')
             ->add('_action', 'actions', array(
                     'actions' => array(
-                        'view' => array(),
+                        'show' => array(),
                         'edit' => array(),
                         'delete' => array(),
                     )

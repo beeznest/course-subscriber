@@ -53,7 +53,7 @@ class ScoreAdmin extends Admin
             ->add('status')
             ->add('_action', 'actions', array(
                     'actions' => array(
-                        'view' => array(),
+                        'show' => array(),
                         'edit' => array(),
                         'delete' => array(),
                     )
