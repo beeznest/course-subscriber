@@ -1,0 +1,83 @@
+
+msgid "breadcrumb.link_student_list"
+msgstr "Estudiantes"
+
+#: form.label_firstname
+msgid "form.label_firstname"
+msgstr "Nombre"
+
+#: form.label_middlename
+msgid "form.label_middlename"
+msgstr "Segundo nombre"
+
+#: form.label_lastname
+msgid "form.label_lastname"
+msgstr "Apellido"
+
+#: form.label_nationality
+msgid "form.label_nationality"
+msgstr "Nacionalidad"
+
+#: form.label_id
+msgid "form.label_id"
+msgstr "Id"
+
+#: form.label_gender
+msgid "form.label_gender"
+msgstr "Sexo"
+
+#: form.label_date_of_birth
+msgid "form.label_date_of_birth"
+msgstr "Fecha de nacimiento"
+
+#: form.label_occupation
+msgid "form.label_occupation"
+msgstr "Ocupación"
+
+#: form.label_phone
+msgid "form.label_phone"
+msgstr "Teléfono"
+
+#: form.label_locality
+msgid "form.label_locality"
+msgstr "Localidad"
+
+#: form.label_region
+msgid "form.label_region"
+msgstr "Región"
+
+#: form.label_country
+msgid "form.label_country"
+msgstr "País"
+
+#: form.label_email
+msgid "form.label_email"
+msgstr "Correo electrónico"
+
+#: form.label_username
+msgid "form.label_username"
+msgstr "Usuario"
+
+#: form.label_password
+msgid "form.label_password"
+msgstr "Contraseña"
+
+#: list.label_firstname
+msgid "list.label_firstname"
+msgstr "Nombre"
+
+#: list.label_lastname
+msgid "list.label_lastname"
+msgstr "Apellido"
+
+#: list.label_nationality
+msgid "list.label_nationality"
+msgstr "Nacionalidad"
+
+#: list.label_id
+msgid "list.label_id"
+msgstr "Id"
+
+#: list.list.label__action
+msgid "list.list.label__action"
+msgstr "Acciones"

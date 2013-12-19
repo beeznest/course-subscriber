@@ -11,6 +11,8 @@ use Knp\Menu\ItemInterface as MenuItemInterface;
 
 class StudentAdmin extends Admin
 {
+    protected $translationDomain = 'SubscriberBundle';
+
     /**
      * @param \Sonata\AdminBundle\Show\ShowMapper $showMapper
      *
@@ -21,10 +23,10 @@ class StudentAdmin extends Admin
         $showMapper
             ->add('firstname')
             ->add('lastname')
-            ->add('middlename')
-            ->add('gender')
-            ->add('date_of_birth')
-            ->add('nationality')
+            //->add('middlename')
+        //    ->add('gender')
+            //->add('date_of_birth')
+            //->add('nationality')
         ;
     }
 
@@ -43,8 +45,8 @@ class StudentAdmin extends Admin
             //->add('gender')
             ->add('gender', 'choice', array(
                 'choices' => array('m' => 'male', 'f' => 'female'),
-                'required' => false,
-                'translation_domain' => $this->getTranslationDomain()
+                'required' => false
+                //'translation_domain' => $this->getTranslationDomain()
             ))
             ->add('date_of_birth', 'birthday')
             ->add('nationality', 'country')
@@ -80,7 +82,7 @@ class StudentAdmin extends Admin
             ->add('nationality')
             ->add('_action', 'actions', array(
                     'actions' => array(
-                        'view' => array(),
+                        'show' => array(),
                         'edit' => array(),
                         'delete' => array(),
                     )

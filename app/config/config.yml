@@ -1,6 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: sonata_core.yml }
     - { resource: sonata_timeline.yml }
 
 framework:
@@ -196,13 +197,24 @@ sonata_doctrine_orm_admin:
                 integer:    SonataAdminBundle:CRUD:base_show_field.html.twig
                 decimal:    SonataAdminBundle:CRUD:base_show_field.html.twig
 
+sonata_intl:
+    timezone:
+        default: Europe/Paris
+        locales:
+            fr:    Europe/Paris
+            es:    Europe/Madrid
+            en_UK: Europe/London
+        detectors:
+              - sonata.intl.timezone_detector.user
+              - sonata.intl.timezone_detector.locale
+
 services:
     application.subscriber.admin.student:
         class: Application\SubscriberBundle\Admin\StudentAdmin
         tags:
-          - { name: sonata.admin, manager_type: orm, group: Students, label: Student}
-        arguments: [null, Application\SubscriberBundle\Entity\Student, ApplicationSubscriberBundle:StudentAdmin]
+          - { name: sonata.admin, manager_type: orm, group: Students, label: Student, label_translator_strategy: sonata.admin.label.strategy.underscore }
 
+        arguments: [null, Application\SubscriberBundle\Entity\Student, ApplicationSubscriberBundle:StudentAdmin]
 
     application.subscriber.admin.lms:
         class: Application\SubscriberBundle\Admin\LmsAdmin
@@ -222,13 +234,11 @@ services:
           - { name: sonata.admin, manager_type: orm, group: LMS, label: LMS registration}
         arguments: [null, Application\SubscriberBundle\Entity\Registration, ApplicationSubscriberBundle:RegistrationAdmin]
 
-
     application.subscriber.admin.score:
         class: Application\SubscriberBundle\Admin\ScoreAdmin
         tags:
           - { name: sonata.admin, manager_type: orm, group: Students, label: Score}
         arguments: [null, Application\SubscriberBundle\Entity\Score, ApplicationSubscriberBundle:ScoreAdmin]
-
 
     application.subscriber.admin.concept:
         class: Application\SubscriberBundle\Admin\ConceptAdmin
