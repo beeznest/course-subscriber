@@ -16,25 +16,37 @@ Setup directory permissions.
 http://symfony.com/doc/current/book/installation.html#configuration-and-setup
 
 Update vendors.
+```
 composer update
+```
 
 Create database.
 Rename parameters.yml.dist to app/config/parameters.yml and update the DB credentials.
 
 Update the DB with the Doctrine2 entities:
+```
 php app/console doctrine:schema:update --force
+```
 
 Create an admin user:
+```
 php app/console fos:user:create admin admin@example.com mypassword --super-admin
+```
 
 Generate resources, moves files from bundles/xxx/Resources/public/ to web/bundles/xxx/
+```
 php app/console assets:install web
+```
 
 Clear cache:
+```
 php app/console cache:clear --env=dev
 php app/console cache:clear --env=prod
+```
 
 Set up your ACL's.
-> app/console init:acl
-> app/console sonata:admin:setup-acl
-> app/console sonata:admin:generate-object-acl
+```
+app/console init:acl
+app/console sonata:admin:setup-acl
+app/console sonata:admin:generate-object-acl
+```
