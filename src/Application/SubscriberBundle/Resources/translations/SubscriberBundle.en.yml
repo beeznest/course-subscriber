@@ -1,0 +1,22 @@
+form:
+  label_firstname: Nombre
+  label_middlename: Segundo nombre
+  label_lastname: Apellido
+  label_nationality: Nacionalidad
+  label_id: Id
+  label_gender: Sexo
+  label_date_of_birth : Fecha de nacimiento
+  label_occupation: Ocupación
+  label_phone: Teléfono
+  label_locality: Localidad
+  label_region: Región
+  label_country: País
+  label_email: Correo electrónico
+  label_username: Usuario
+  label_password: Contraseña
+list:
+  label_firstname: Nombre
+  label_lastname: Apellido
+  label_nationality: Nacionalidad
+  label_id: Id
+  list.label__action: Acciones
