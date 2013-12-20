@@ -58,7 +58,17 @@ you need to clean your cache:
 ```
 php app/console cache:clear
 ```
+
+Upgrade from previous versions
+==============================
+
+To upgrade from previous versions, you'll have to run migrations.
+This is easily done by issueing the following command:
+```
+php app/console ...
+```
+
 Misc
 ====
 
-[![Build Status](https://api.travis-ci.org/beeznest/course-subscriber.png)](https://api.travis-ci.org/beeznest/course-subscriber)
+[![Build Status](https://api.travis-ci.org/beeznest/course-subscriber.png)](https://travis-ci.org/beeznest/course-subscriber)
