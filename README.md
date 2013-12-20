@@ -65,7 +65,7 @@ Upgrade from previous versions
 To upgrade from previous versions, you'll have to run migrations.
 This is easily done by issueing the following command:
 ```
-php app/console ...
+php app/console doctrine:schema:update --force
 ```
 
 Misc
