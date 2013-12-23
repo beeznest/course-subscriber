@@ -114,7 +114,8 @@ sonata_admin:
     title_logo: bundles/applicationsubscriber/images/logo.jpg
     templates:
         # default global templates
-        layout:  SonataAdminBundle::standard_layout.html.twig
+        #layout:  SonataAdminBundle::standard_layout.html.twig
+        layout:  ApplicationSubscriberBundle:Sonata:standard_layout.html.twig
         ajax:    SonataAdminBundle::ajax_layout.html.twig
 
         # default actions templates, should extend a global templates
