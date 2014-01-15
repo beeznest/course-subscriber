@@ -72,3 +72,9 @@ Misc
 ====
 
 [![Build Status](https://api.travis-ci.org/beeznest/course-subscriber.png)](https://travis-ci.org/beeznest/course-subscriber)
+
+Todo
+====
+
+* names for custom bundles have too generic names, i.e. sonata user should be student, namespace could be better than "Application"?
+* new controller for login/* to use students table to authenticate isntead of fos_user?
