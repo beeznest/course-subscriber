@@ -44,3 +44,6 @@ sonata_user:
     resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
     prefix: /admin
 
+student_help:
+    path: /help
+    defaults: { _controller: SonataUserBundle:Help:index }
