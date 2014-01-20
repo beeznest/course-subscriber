@@ -47,3 +47,11 @@ sonata_user:
 student_help:
     path: /help
     defaults: { _controller: SonataUserBundle:Help:index }
+
+student_check:
+    path: /check
+    defaults: { _controller: SonataUserBundle:StudentCheck:index }
+
+modules:
+    path: /modules
+    defaults: { _controller: SonataUserBundle:Modules:index }
