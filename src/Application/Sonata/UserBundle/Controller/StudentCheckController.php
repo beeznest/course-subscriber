@@ -16,11 +16,14 @@ class StudentCheckController extends ContainerAware
         #   terms and conditions
         #   link page (couse 1 or plex link)
         #   modulos page
-        //error_log('modules');
         #return new RedirectResponse($this->generateUrl('homepage'));
-        return $this->redirect('modules');
+        return $this->redirect('choose');
     }
 
+    public function chooseAction()
+    {
+        return $this->container->get('templating')->renderResponse('ApplicationSonataUserBundle::choose.html.twig');
+    }
     /**
     * Forwards the request to another controller.
     *

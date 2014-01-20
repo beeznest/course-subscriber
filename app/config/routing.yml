@@ -52,6 +52,10 @@ student_check:
     path: /check
     defaults: { _controller: SonataUserBundle:StudentCheck:index }
 
+student_choose:
+    path: /choose
+    defaults: { _controller: SonataUserBundle:StudentCheck:choose }
+
 modules:
     path: /modules
     defaults: { _controller: SonataUserBundle:Modules:index }

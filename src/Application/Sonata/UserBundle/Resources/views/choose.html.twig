@@ -1,0 +1,42 @@
+{% extends "ApplicationSonataUserBundle::layout.html.twig" %}
+
+{% block modules_content %}
+    <!--h1>{{ 'Choose'|trans({}, 'SonataUserBundle') }}</h1-->
+
+        <div class="row-fluid">
+            <div class="contenido-eleccion">
+                <div class="logo-vlearning-eleccion"><img src="{{ asset('bundles/applicationsubscriber/images/logo-V-learning.png') }}"/></div>
+            </div>
+        </div>
+
+        <div  class="row-fluid">
+            <div class="contenido-eleccion">
+            <div class="row border-eleccion">
+                <div class="bienvenida">
+                    <h2 class="texto-bienvenida">¡Tu ingreso al sistema fue un éxito!</h2>
+                    <p class="texto-referencia">A continuación escoge una de las siguientes opciones para llevar un curso en V Learning, si tienes una duda, dar clic en el icono de ayuda</p>
+                </div>
+            
+            <div class="span12">
+                <div class="span6">
+                    <div class="ico-curso">
+                        <a href="{{ path('modules') }}"><img src="{{ asset('bundles/applicationsubscriber/images/iconoLibro.png') }}" /></a>
+                    <div class="link-curso">
+                        <a href="{{ path('modules') }}">Curso Normal</a>
+                    </div>
+                    </div>
+                    
+                </div>
+                <div class="span6">
+                    <div class="ico-curso">
+                        <a href="https://virtual.icpna.edu.pe/"><img src="{{ asset('bundles/applicationsubscriber/images/iconoTest.png') }}" /></a>
+                        <div class="link-curso">
+                        <a href="https://virtual.icpna.edu.pe/">Examen PLEX</a>
+                    </div>
+                    </div>
+                    
+                    </div></div>
+            </div>
+            </div>
+        </div>
+{% endblock modules_content %}
