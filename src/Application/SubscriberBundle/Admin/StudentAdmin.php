@@ -63,7 +63,20 @@ class StudentAdmin extends Admin
             ->add('password')
             ->with('Extra')
             ->add('id_num', 'text')
-            ->add('status')
+            ->add('status','choice', array(
+                'choices' => array(
+                    0 => 'never connected', 
+                    1 => 'logged in once',
+                    2 => 'approved terms',
+                    3 => 'entered plex',
+                    4 => 'entered course',
+                    5 => 'finished one course',
+                    6 => 'finished all',
+                    #7 => 'locked',
+                    ),
+                'required' => false
+                //'translation_domain' => $this->getTranslationDomain()
+            ))
             ->end()
         ;
     }
