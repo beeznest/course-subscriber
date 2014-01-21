@@ -2,13 +2,17 @@
 
 namespace Application\Sonata\UserBundle\Controller;
 
-use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\SecurityContext;
+
 
 /**
  * Extends FOS user bundle security controller.
  */
-class StudentCheckController extends ContainerAware
+class StudentCheckController extends Controller
 {
     public function indexAction()
     {
@@ -17,40 +21,47 @@ class StudentCheckController extends ContainerAware
         #   link page (couse 1 or plex link)
         #   modulos page
         #return new RedirectResponse($this->generateUrl('homepage'));
+        /*$student = $this->getDoctrine()
+        ->getRepository('ApplicationSubscriberBundle:Student')
+        ->find('2');*/
+        //error_log(print_r($student,1));
         return $this->redirect('choose');
     }
 
     public function chooseAction()
     {
-        return $this->container->get('templating')->renderResponse('ApplicationSonataUserBundle::choose.html.twig');
-    }
-    /**
-    * Forwards the request to another controller.
-    *
-    * @param string $controller The controller name (a string like BlogBundle:Post:index)
-    * @param array $path An array of path parameters
-    * @param array $query An array of query parameters
-    *
-    * @return Response A Response instance
-    */
-    public function forward($controller, array $path = array(), array $query = array())
-    {
-        $path['_controller'] = $controller;
-        $subRequest = $this->container->get('request')->duplicate($query, null, $path);
-
-        return $this->container->get('http_kernel')->handle($subRequest, HttpKernelInterface::SUB_REQUEST);
+        $content = $this->renderView('ApplicationSonataUserBundle::choose.html.twig');
+        return new Response($content);
     }
 
-    /**
-    * Returns a RedirectResponse to the given URL.
-    *
-    * @param string $url The URL to redirect to
-    * @param integer $status The status code to use for the Response
-    *
-    * @return RedirectResponse
-    */
-    public function redirect($url, $status = 302)
+    public function loginAction(Request $request)
     {
-        return new RedirectResponse($url, $status);
+        $session = $request->getSession();
+
+        // get the login error if there is one
+        if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
+            $error = $request->attributes->get(
+                SecurityContext::AUTHENTICATION_ERROR
+            );
+        } else {
+            $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
+            $session->remove(SecurityContext::AUTHENTICATION_ERROR);
+        }
+
+        return $this->render(
+            'ApplicationSonataUserBundle::student_login.html.twig',
+            array(
+                // last username entered by the user
+                'last_username' => $session->get(SecurityContext::LAST_USERNAME),
+                'error'         => $error,
+            )
+        );
     }
+    
+    public function loginCheckAction()
+    {
+        $content = $this->renderView('ApplicationSonataUserBundle::student_login.html.twig');
+        return new Response($content);
+    }
+ 
 }

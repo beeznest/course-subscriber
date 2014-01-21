@@ -3,6 +3,8 @@
 namespace Application\SubscriberBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+
 
 /**
  * Student
@@ -10,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="student")
  * @ORM\Entity
  */
-class Student
+class Student implements UserInterface
 {
     /**
      * @var integer
@@ -23,11 +25,10 @@ class Student
 
     /**
      * @var string
-     *
+     *use Sonata\UserBundle\Entity\BaseUser as BaseUser;
      * @ORM\Column(name="firstname", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
      */
     private $firstname;
-
 
     /**
      * @var string
@@ -129,7 +130,7 @@ class Student
     private $createdAt;
 
     /**
-     * @var string
+     * @var stringuse Sonata\UserBundle\Entity\BaseUser as BaseUser;
      *
      * @ORM\Column(name="status", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
      */
@@ -163,18 +164,128 @@ class Student
     private $registration;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="terms", type="boolean", unique=false)
+     */
+    private $terms;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="salt",  type="string", length=255, precision=0, scale=0, unique=false)
+     */
+    private $salt;
+
+    /**
      *
      */
     public function __construct()
     {
+        parent::__construct();
         $this->createdAt = new \DateTime("now");
     }
 
     /**
+     * @return array|\Symfony\Component\Security\Core\Role\Role[]
+     */
+    public function getRoles()
+    {
+        return array('ROLE_STUDENT');
+    }
+
+    public function eraseCredentials()
+    {
+        return false;
+    }
+
+
+    public function getSalt()
+    {
+        return $this->getSalt();
+    }
+
+    public function setSalt($salt)
+    {
+        return $this->salt = $salt;
+    }
+    /**
+     * @param UserInterface $account
+     * @return bool
+     */
+    public function equals(UserInterface $account)
+    {
+        if ($account->getUsername() != $this->getUsername) {
+            return false;
+        }
+        if ($account->getEmail() != $this->getEmail) {
+            return false;
+        }
+        return true;
+    }
+    /**
+     * @see \Serializable::serialize()
+     */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->salt,
+            $this->password,
+        ));
+    }
+
+    /**
+     * @see \Serializable::unserialize()
+     */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->username,
+            $this->salt,
+            $this->password,
+            ) = unserialize($serialized);
+    }
+
+    /**
+     * @param string $username
+     * @return mixed
+     */
+    public function loadUserByUsername($username)
+    {
+        return $this->findOneBy(array('username' => $username));
+    }
+
+    /**
+     * @param UserInterface $user
+     * @return UserInterface
+     */
+    public function loadUser(UserInterface $user)
+    {
+        return $user;
+    }
+
+    /**
+     * @param AccountInterface $account
+     * @return mixed
+     */
+    /*public function loadUserByAccount(AccountInterface $account)
+    {
+        return $this->loadUserByUsername($account->getUsername());
+    }*/
+
+    public function supportsClass($class)
+    {
+        return true;
+    }
+        /**
      * @return string
      */
     public function __toString()
     {
+
         return $this->getFirstname();
     }
 
@@ -202,6 +313,30 @@ class Student
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get Terms
+     *
+     * @return integer
+     */
+    public function getTerms()
+    {
+        return $this->terms;
+    }
+
+
+    /**
+     * Set terms
+     *
+     * @param string $terms
+     * @return Student
+     */
+    public function setTerms($terms)
+    {
+        $this->terms = $terms;
+
+        return $this;
     }
 
     /**
