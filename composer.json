@@ -32,7 +32,8 @@
         "stephpy/TimelineBundle": "dev-master",
         "stephpy/timeline": "dev-master",
         "sonata-project/intl-bundle": "dev-master",
-        "jms/translation-bundle": "dev-master"
+        "jms/translation-bundle": "dev-master",
+        "sonata-project/page-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
