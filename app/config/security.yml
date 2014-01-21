@@ -1,7 +1,13 @@
 security:
     providers:
+        #chain_provider:
+        #    chain:
+        #        providers: [fos_userbundle, students]
         fos_userbundle:
             id: fos_user.user_manager
+        students:
+            entity: { class:  ApplicationSubscriberBundle:Student, property: username }
+
 
     acl:
         connection: default
@@ -23,6 +29,7 @@ security:
         # those are the roles I will use (less verbose)
         ROLE_ADMIN:             [ROLE_STAFF, ROLE_SONATA_FOO_EDITOR, ROLE_SONATA_FOO_ADMIN]
         ROLE_SUPER_ADMIN:       [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+        ROLE_STUDENT:           [ROLE_STUDENT]
 
     # set access_strategy to unanimous, else you may have unexpected behaviors
     access_decision_manager:
@@ -58,6 +65,15 @@ security:
             logout:       true
             anonymous:    true
 
+        students:
+            pattern:      /student(.*)
+            form_login:
+                provider:       students
+                login_path:     /student/login
+                use_forward:    false
+                check_path:     /student/login_check
+
+
     access_control:
         # URL of FOSUserBundle which need to be available to anonymous users
         - { path: ^/_wdt, role: IS_AUTHENTICATED_ANONYMOUSLY }
@@ -88,6 +104,9 @@ security:
         # Change these rules to adapt them to your needs
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/student/login_check, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/student/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/student/, role: ROLE_STUDENT }
 
 parameters:
     # ... other parameters
