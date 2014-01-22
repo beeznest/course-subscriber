@@ -59,3 +59,7 @@ student_choose:
 modules:
     path: /modules
     defaults: { _controller: SonataUserBundle:Modules:index }
+
+sso_chamilo:
+    pattern:  /sso_chamilo
+    defaults: { _controller: SonataUserBundle:Sso:index }

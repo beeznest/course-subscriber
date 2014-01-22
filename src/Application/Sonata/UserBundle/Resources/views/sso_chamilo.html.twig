@@ -1,0 +1,54 @@
+{% extends 'ApplicationSonataUserBundle::sso.html.twig' %}
+
+{% block title %}Symfony - AJAX{% endblock %}
+
+{% block body %}
+
+    <div id="articulos">
+        <fieldset>
+            <form action="Sso" method="post">
+                <ul>
+                    <li> <label for="name">Username </label>
+                        <input type="text" size="30"  name="name" id="name"  /></li>
+                    <li> <label for="word">Password</label>
+                        <input type="password" size="30"  name="word" id="word"  /></li>
+                    <li> <label></label>
+                        <input type="submit" id="login" name="login" value="Login" class="loginbutton" ></li>
+                </ul>
+            </form>
+        </fieldset>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+
+        $(document).ready(function(){
+            $("#login").click(function(){
+                username=$("#name").val();
+                secret=$("#word").val();
+                hash_secret=CryptoJS.SHA1(secret);
+                $.ajax({
+                    type: "POST",
+                    url: "http://icpna.chamilo.net/main/auth/sso/icpna_tdp.sso.class.php",
+                    data: "name="+username+"&secret="+hash_secret,
+                    success: function(html){
+                        if(html=='true')    {
+                            console.log('SSO works');
+                        }
+                        else    {
+                            console.log('Wrong username or password');
+                        }
+                    },
+                    beforeSend:function()
+                    {
+                        console.log('...Loading...');
+                    }
+                });
+                return false;
+            });
+        });
+
+    </script>
+{% endblock %}
