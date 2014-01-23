@@ -25,10 +25,9 @@ class ModulesController extends Controller
         $adult = $usr->getAdult();
         //$class = ($adult) ? 'kids' : 'adult';
         //$modules = array();
-        error_log(print_r($adult,1));
 
         if ($adult) {
-            return $this->container->get('templating')->renderResponse('ApplicationSonataUserBundle::modules_kids.html.twig');
+            return $this->container->get('templating')->renderResponse('ApplicationSonataUserBundle::modules.html.twig');
         } else {
             return $this->container->get('templating')->renderResponse('ApplicationSonataUserBundle::modules_kids.html.twig');
         }
