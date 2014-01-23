@@ -29,17 +29,15 @@
                 username=$("#name").val();
                 secret=$("#word").val();
                 hash_secret=CryptoJS.SHA1(secret);
+                target="http://suscriber.me/web/help";
+                ref="http://suscriber.me/web/sso_chamilo";
                 $.ajax({
-                    type: "POST",
-                    url: "http://icpna.chamilo.net/main/auth/sso/icpna_tdp.sso.class.php",
-                    data: "name="+username+"&secret="+hash_secret,
+                    type: "GET",
+                    crossDomain: true,
+                    url: "http://icpna.chamilo.net/index.php"+"?name="+username+"&secret="+hash_secret+"&target="+target+"&sso_cookie=1&sso_referer="+ref,
+                    //data: "name="+username+"&secret="+hash_secret+"&target="+target+"&sso_cookie=1&sso_referer="+ref,
                     success: function(html){
-                        if(html=='true')    {
-                            console.log('SSO works');
-                        }
-                        else    {
-                            console.log('Wrong username or password');
-                        }
+                        console.log(html);
                     },
                     beforeSend:function()
                     {
