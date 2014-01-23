@@ -77,6 +77,20 @@ class StudentAdmin extends Admin
                 'required' => false
                 //'translation_domain' => $this->getTranslationDomain()
             ))
+            // Temporal fields to avoid error until a way to insert default values is found
+            ->add('terms', 'choice', array(
+                'choices' => array(
+                    0 => 'Not approved yet',
+                    1 => 'Approved',
+                )
+            ))
+            ->add('adult', 'choice', array(
+                'choices' => array(
+                    0 => 'Niño/a',
+                    1 => 'Adulto/a',
+                )
+            ))
+            ->add('salt', 'text')
             ->end()
         ;
     }
