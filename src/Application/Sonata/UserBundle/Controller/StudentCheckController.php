@@ -94,7 +94,13 @@ class StudentCheckController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->persist($usr);
         $em->flush();
-        return $this->redirect('http://vlearning.icpna.edu.pe/courses/COURSE1/index.php');
+
+        $adult = $usr->getAdult();
+        if ($adult) {
+            return $this->redirect('http://vlearning.icpna.edu.pe/courses/COURSE1/index.php');
+        } else {
+            return $this->redirect('http://vlearningkids.icpna.edu.pe/courses/COURSE01/index.php');
+        }
     }
     /**
      * Show terms and conditions page

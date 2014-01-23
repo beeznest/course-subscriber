@@ -353,7 +353,7 @@ class Student implements UserInterface
      */
     public function getAdult()
     {
-        return $this->terms;
+        return $this->adult;
     }
 
 
