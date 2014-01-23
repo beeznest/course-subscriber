@@ -34,6 +34,10 @@ class StudentCheckController extends Controller
         return new Response($content);
     }
 
+    /**
+     * @param Request $request
+     * @return Response
+     */
     public function loginAction(Request $request)
     {
         $session = $request->getSession();
@@ -58,10 +62,10 @@ class StudentCheckController extends Controller
         );
     }
     
-    public function loginCheckAction()
+    /*public function loginCheckAction()
     {
         $content = $this->renderView('ApplicationSonataUserBundle::student_login.html.twig');
         return new Response($content);
-    }
+    }*/
  
 }
