@@ -48,6 +48,7 @@ login_check:
 
 logout:
     path: /logout
+
 sonata_user:
     resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
     prefix: /admin
@@ -68,3 +69,10 @@ modules:
     path: /modules
     defaults: { _controller: SonataUserBundle:Modules:index }
 
+terms:
+    path: /terms
+    defaults: { _controller: SonataUserBundle:StudentCheck:terms }
+
+terms_check:
+    path: /terms_check
+    defaults: { _controller: SonataUserBundle:StudentCheck:termsCheck }
