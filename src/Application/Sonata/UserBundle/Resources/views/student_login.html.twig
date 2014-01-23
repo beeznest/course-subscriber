@@ -36,7 +36,7 @@ file that was distributed with this source code.
                     <div>{{ error.message }}</div>
                 {% endif %}
 
-                <form action="{{ path('student_login_check') }}" method="post" class="login active">
+                <form action="{{ path('login_check') }}" method="post" class="login active">
                     <label for="username">Username:</label>
                     <input type="text" id="username" name="_username" value="{{ last_username }}" />
 
