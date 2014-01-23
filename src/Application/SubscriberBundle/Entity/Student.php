@@ -365,7 +365,7 @@ class Student implements UserInterface
      */
     public function setAdult($adult)
     {
-        $this->terms = $adult;
+        $this->adult = $adult;
 
         return $this;
     }
