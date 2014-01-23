@@ -69,13 +69,13 @@ modules:
     path: /modules
     defaults: { _controller: SonataUserBundle:Modules:index }
 
+sso_chamilo:
+    pattern:  /sso_chamilo
+    defaults: { _controller: SonataUserBundle:Sso:index }
+
 terms:
     path: /terms
     defaults: { _controller: SonataUserBundle:StudentCheck:terms }
-
-terms_check:
-    path: /terms_check
-    defaults: { _controller: SonataUserBundle:StudentCheck:termsCheck }
 
 first_course:
     path: /first_course
