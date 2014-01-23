@@ -202,7 +202,7 @@ class Student implements UserInterface
 
     public function getSalt()
     {
-        return $this->getSalt();
+        return $this->salt;
     }
 
     public function setSalt($salt)
