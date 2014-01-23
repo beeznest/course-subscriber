@@ -44,7 +44,13 @@ php app/console cache:clear --env=dev
 php app/console cache:clear --env=prod
 ```
 
-Set up your ACL's.
+If the system is getting upset over permissions to access the cache (usually a blank page, but if you're in debug mode you'll even get the error message), you might have to implement one of the three methods offered at http://symfony.com/doc/current/book/installation.html#configuration-and-setup
+If none of these work, you'll have to redefine the permissions on your app/cache directory every time you launch the cache:clear command:
+```
+sudo chown -R www-data:www-data app/cache
+```
+
+Set up your ACL's (these are access control lists inside the Sonata application).
 ```
 app/console init:acl
 app/console sonata:admin:setup-acl
@@ -67,6 +73,22 @@ This is easily done by issueing the following command:
 ```
 php app/console doctrine:schema:update --force
 ```
+
+Migrating from development to production environment
+====================================================
+
+Update web/app.php, and change the call to AppKernel to:
+```
+$kernel = new AppKernel('prod', false);
+```
+Clean the cache:
+```
+php app/console cache:clear --env=dev
+php app/console cache:clear --env=prod
+```
+
+  
+
 
 Misc
 ====
