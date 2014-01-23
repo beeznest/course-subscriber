@@ -76,3 +76,8 @@ terms:
 terms_check:
     path: /terms_check
     defaults: { _controller: SonataUserBundle:StudentCheck:termsCheck }
+
+first_course:
+    path: /first_course
+    defaults: { _controller: SonataUserBundle:StudentCheck:firstCourse }
+
