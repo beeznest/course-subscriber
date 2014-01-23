@@ -29,27 +29,36 @@ class StudentCheckController extends Controller
     }
 
     /**
+     * Check function
+     *
      * @return RedirectResponse
      */
-    public function indexAction()
+    public function checkAction()
     {
+        error_log(__LINE__);
         //check if user already accepted terms and conditions
         $usr = $this->get('security.context')->getToken()->getUser();
         $terms = $usr->getTerms();
         if (empty($terms)) {
+            error_log(__LINE__);
             return $this->redirect('terms');
         }
-
+        error_log(__LINE__);
         //if is not first this the user connects, send him to modules page
         //status 3 = entered PLEX
         //status 4 = entered modules
         $status = $usr->getStatus();
         if (in_array($status, array(3,4))) {
+            error_log(__LINE__);
             return $this->redirect('modules');
+        } else {
+            //if is first this the user connects, send him to choose page
+            error_log(__LINE__);
+            return $this->redirect('choose');
         }
-        //if is first this the user connects, send him to choose page
-        return $this->redirect('choose');
-
+        error_log(__LINE__);
+        //return true as default so we can use this function as a check for other pages
+        #return true;
         #   link page (course 1 or plex link)
         #   modulos page
         #return new RedirectResponse($this->generateUrl('homepage'));
@@ -66,25 +75,29 @@ class StudentCheckController extends Controller
      */
     public function chooseAction()
     {
+        error_log(__LINE__);
+        $this->checkAction();
+        error_log(__LINE__);
         $content = $this->renderView('ApplicationSonataUserBundle::choose.html.twig');
         return new Response($content);
     }
 
     /**
      * Show terms and conditions page
-     * Creates Terms and conditions Form
+     * Creates and process Terms and conditions Form
      * @return Response
      */
     public function termsAction(Request $request)
     {
         $usr = $this->get('security.context')->getToken()->getUser();
 
-        //if terms already accepted
+        //If terms already accepted
         if ($usr->getTerms()) {
+            error_log(__LINE__);
             return $this->redirect('check');
         }
 
-        //create form
+        //Create form
         $defaultData = array();
         $form = $this->createFormBuilder($defaultData)
             ->add('terms', 'checkbox')
@@ -96,7 +109,7 @@ class StudentCheckController extends Controller
 
             $data = $form->getData();
 
-            //if terms accepted
+            //If terms accepted
             if ($data['terms'] == 1) {
                 //update object
                 $usr->setTerms(1);
@@ -111,7 +124,6 @@ class StudentCheckController extends Controller
             return $this->redirect('check');
         }
 
-        #return new Response($content);
         return $this->render('ApplicationSonataUserBundle::terms.html.twig', array('form' => $form->createView()));
     }
 
