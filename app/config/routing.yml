@@ -25,20 +25,29 @@ application_subscriber:
     type:     annotation
     prefix:   /
 
-fos_user_security:
-    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+#fos_user_security:
+#    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
-fos_user_profile:
-    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
-    prefix: /profile
+#fos_user_profile:
+#    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+#    prefix: /profile
 
-fos_user_resetting:
-    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
-    prefix: /resetting
+#fos_user_resetting:
+#    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+#    prefix: /resetting
+#
+#fos_user_change_password:
+#    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+#    prefix: /change-password
+login:
+    path: /login
+    defaults:   {_controller: SonataUserBundle:StudentCheck:login }
 
-fos_user_change_password:
-    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
-    prefix: /change-password
+login_check:
+    path: /login_check
+
+logout:
+    path: /logout
 
 sonata_user:
     resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
@@ -50,7 +59,7 @@ student_help:
 
 student_check:
     path: /check
-    defaults: { _controller: SonataUserBundle:StudentCheck:index }
+    defaults: { _controller: SonataUserBundle:StudentCheck:check }
 
 student_choose:
     path: /choose
@@ -63,3 +72,8 @@ modules:
 sso_chamilo:
     pattern:  /sso_chamilo
     defaults: { _controller: SonataUserBundle:Sso:index }
+
+terms:
+    path: /terms
+    defaults: { _controller: SonataUserBundle:StudentCheck:terms }
+
