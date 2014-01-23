@@ -17,10 +17,10 @@
         <div class="container">
             <div>
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                    {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                    <!--{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
                     <a href="{{ path('logout') }}">
                         {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                    </a>
+                    </a-->
 
                     {% block terms_content %}
                     {% endblock terms_content %}
