@@ -79,7 +79,7 @@ class StudentCheckController extends Controller
             'ApplicationSonataUserBundle::choose.html.twig',
             array(
                 'login' => $usr->getUsername(),
-                'pass'  => sha1($usr->getPassword()),
+                'pass'  => $usr->getPassword(),
             )
         );
         return new Response($content);
