@@ -16,21 +16,52 @@ class StudentCheckController extends Controller
 {
     public function indexAction()
     {
-        //check if we show, in this order: 
-        #   terms and conditions
-        #   link page (couse 1 or plex link)
+        //Get user
+        //@TODO can we to this nicer?
+        $usr= $this->get('security.context')->getToken()->getUser();
+
+        //check if user already accepted terms and conditions
+        $terms = $usr->getTerms();
+        if (empty($terms)) {
+            return $this->redirect('terms');
+        }
+
+        //if is not first this the user connects, send him to modules page
+        //status 3 = entered PLEX
+        //status 4 = entered modules
+        $status = $usr->getStatus();
+        if (in_array($status, array(3,4))) {
+            return $this->redirect('modules');
+        }
+        //if is first this the user connects, send him to choose page
+        return $this->redirect('choose');
+
+        #   link page (course 1 or plex link)
         #   modulos page
         #return new RedirectResponse($this->generateUrl('homepage'));
         /*$student = $this->getDoctrine()
         ->getRepository('ApplicationSubscriberBundle:Student')
         ->find('2');*/
         //error_log(print_r($student,1));
-        return $this->redirect('choose');
+
+        #return $this->redirect('choose');
     }
 
+    /**
+     * @return Response
+     */
     public function chooseAction()
     {
         $content = $this->renderView('ApplicationSonataUserBundle::choose.html.twig');
+        return new Response($content);
+    }
+
+    /**
+     * @return Response
+     */
+    public function termsAction()
+    {
+        $content = $this->renderView('ApplicationSonataUserBundle::terms.html.twig');
         return new Response($content);
     }
 
