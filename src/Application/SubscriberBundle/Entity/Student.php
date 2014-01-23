@@ -280,7 +280,7 @@ class Student implements UserInterface
     {
         return true;
     }
-        /**
+    /**
      * @return string
      */
     public function __toString()

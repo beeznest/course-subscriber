@@ -11,7 +11,7 @@ file that was distributed with this source code.
 
 {% extends "ApplicationSonataUserBundle::layout.html.twig" %}
 
-{% block fos_user_content %}
+{% block user_login %}
     {% if error %}
         <div class="alert alert-danger alert-error">{{ error|trans({}, 'FOSUserBundle') }}</div>
     {% endif %}
@@ -146,4 +146,4 @@ file that was distributed with this source code.
         </script>
 
     </div>
-{% endblock fos_user_content %}
+{% endblock user_login %}
