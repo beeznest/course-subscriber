@@ -10,7 +10,7 @@ body{
 	overflow-y:scroll;
 	background-image:url("../images/bg-image.jpg");
 	background-repeat: repeat-x;
-	background-position: center;
+	background-position: center 0;
 	background-color: #fff;
 }
 h1{
@@ -60,7 +60,7 @@ a.back{
 /* Form Style */
 .form_wrapper{
 	/*border:1px solid #ddd;*/
-	margin:0 auto;
+	/*margin:0 auto;*/
 	width:350px;
 	font-size:16px;
 	
@@ -237,6 +237,7 @@ form.forgot_password{
 	margin-top: 5em;
 	margin-bottom: 5em;
 	text-align: right;
+    padding-top: 55px;
 }
 .logo-vlearning-login{
 	margin-top: 5em;

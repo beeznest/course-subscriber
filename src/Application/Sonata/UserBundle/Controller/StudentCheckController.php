@@ -69,8 +69,19 @@ class StudentCheckController extends Controller
      */
     public function chooseAction()
     {
+        //this is not working
         $this->checkAction();
-        $content = $this->renderView('ApplicationSonataUserBundle::choose.html.twig');
+
+        //Get User
+        $usr = $this->get('security.context')->getToken()->getUser();
+
+        $content = $this->renderView(
+            'ApplicationSonataUserBundle::choose.html.twig',
+            array(
+                'login' => $usr->getUsername(),
+                'pass'  => sha1($usr->getPassword()),
+            )
+        );
         return new Response($content);
     }
 
@@ -83,7 +94,7 @@ class StudentCheckController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->persist($usr);
         $em->flush();
-        return $this->redirect('http://vlearning.icpna.edu.pe/courses/COURSE1/');
+        return $this->redirect('http://vlearning.icpna.edu.pe/courses/COURSE1/index.php');
     }
     /**
      * Show terms and conditions page
