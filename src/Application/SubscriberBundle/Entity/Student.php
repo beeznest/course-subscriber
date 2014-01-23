@@ -173,6 +173,13 @@ class Student implements UserInterface
     /**
      * @var string
      *
+     * @ORM\Column(name="adult", type="boolean", unique=false)
+     */
+    private $adult;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="salt",  type="string", length=255, precision=0, scale=0, unique=false)
      */
     private $salt;
@@ -335,6 +342,30 @@ class Student implements UserInterface
     public function setTerms($terms)
     {
         $this->terms = $terms;
+
+        return $this;
+    }
+
+    /**
+     * Get Adult
+     *
+     * @return integer
+     */
+    public function getAdult()
+    {
+        return $this->terms;
+    }
+
+
+    /**
+     * Set Adult
+     *
+     * @param string $adult
+     * @return Student
+     */
+    public function setAdult($adult)
+    {
+        $this->terms = $adult;
 
         return $this;
     }
