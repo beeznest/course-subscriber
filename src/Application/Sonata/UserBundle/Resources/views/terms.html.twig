@@ -19,7 +19,7 @@ file that was distributed with this source code.
             <div class="contenido">
                 <div class="logo-icpna-terminos"> <img src="images/logo-ICPNA.png"/></div>
                 <div class="terminos-condiciones">
-
+                    {{ form_errors(form) }}
                     <!-- 		TERMINOS Y CONDICIONES -->
                     <div class="scroll-terminos">
 
@@ -92,9 +92,12 @@ file that was distributed with this source code.
 
                         <!-- FIN DE TERMINOS Y CONDICIONES -->
                     </div>
-                    <form class="form-terminos">
+
+                    <form class="form-terminos" method="POST" {{ form_enctype(form) }} action="{{ path('terms') }}">
                         <div class="acepto">
-                            <input type="checkbox" class="checkbox" /><span>Acepto los términos y condiciones del servicio</span>
+                            <!--input type="checkbox" class="checkbox" /-->
+                            {{ form_row(form.terms) }}<span>Acepto los términos y condiciones del servicio</span>
+
                         </div>
                         <div class="boton-continuar"><input type="submit" value="Continuar" class="btn btn-primary btn-lg btn-block fuente-btn"></input></div>
                     </form>

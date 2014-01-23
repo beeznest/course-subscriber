@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
+use \Symfony\Component\DependencyInjection\ContainerInterface;
 
 
 /**
@@ -14,13 +15,26 @@ use Symfony\Component\Security\Core\SecurityContext;
  */
 class StudentCheckController extends Controller
 {
-    public function indexAction()
+    private $usr;
+
+    /**
+     *
+     */
+    public function __construct()
     {
         //Get user
-        //@TODO can we to this nicer?
-        $usr= $this->get('security.context')->getToken()->getUser();
+        //@TODO this is not working
+        //@TODO can we do this nicer?
+        #$this->usr = $this->get('security.context')->getToken()->getUser();
+    }
 
+    /**
+     * @return RedirectResponse
+     */
+    public function indexAction()
+    {
         //check if user already accepted terms and conditions
+        $usr = $this->get('security.context')->getToken()->getUser();
         $terms = $usr->getTerms();
         if (empty($terms)) {
             return $this->redirect('terms');
@@ -57,12 +71,48 @@ class StudentCheckController extends Controller
     }
 
     /**
+     * Show terms and conditions page
+     * Creates Terms and conditions Form
      * @return Response
      */
-    public function termsAction()
+    public function termsAction(Request $request)
     {
-        $content = $this->renderView('ApplicationSonataUserBundle::terms.html.twig');
-        return new Response($content);
+        $usr = $this->get('security.context')->getToken()->getUser();
+
+        //if terms already accepted
+        if ($usr->getTerms()) {
+            return $this->redirect('check');
+        }
+
+        //create form
+        $defaultData = array();
+        $form = $this->createFormBuilder($defaultData)
+            ->add('terms', 'checkbox')
+            ->getForm();
+
+        //Process Submit
+        if ($request->getMethod() == 'POST') {
+            $form->submit($request);
+
+            $data = $form->getData();
+
+            //if terms accepted
+            if ($data['terms'] == 1) {
+                //update object
+                $usr->setTerms(1);
+                $usr->setStatus(1);  //Logged in
+
+                //save object
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($usr);
+                $em->flush();
+            }
+
+            return $this->redirect('check');
+        }
+
+        #return new Response($content);
+        return $this->render('ApplicationSonataUserBundle::terms.html.twig', array('form' => $form->createView()));
     }
 
     /**
