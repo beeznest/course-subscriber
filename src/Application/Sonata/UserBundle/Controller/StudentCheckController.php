@@ -36,7 +36,7 @@ class StudentCheckController extends Controller
     public function checkAction()
     {
         //check if user already accepted terms and conditions
-        $usr = $this->get('security.context')->getToken()->getUser();
+        $usr = $this->getUser();
         $terms = $usr->getTerms();
         if (empty($terms)) {
             return $this->redirect('terms');
@@ -69,11 +69,11 @@ class StudentCheckController extends Controller
      */
     public function chooseAction()
     {
-        //this is not working
+        //@TODO this is not working
         $this->checkAction();
 
         //Get User
-        $usr = $this->get('security.context')->getToken()->getUser();
+        $usr = $this->getUser();
 
         $content = $this->renderView(
             'ApplicationSonataUserBundle::choose.html.twig',
@@ -87,7 +87,7 @@ class StudentCheckController extends Controller
 
     public function firstCourseAction()
     {
-        $usr = $this->get('security.context')->getToken()->getUser();
+        $usr = $this->getUser();
         $usr->setStatus(4);  //selected first course
 
         //save object
@@ -102,6 +102,7 @@ class StudentCheckController extends Controller
             return $this->redirect('http://vlearningkids.icpna.edu.pe/courses/COURSE01/index.php');
         }
     }
+
     /**
      * Show terms and conditions page
      * Creates and process Terms and conditions Form
@@ -163,7 +164,7 @@ class StudentCheckController extends Controller
             $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
             $session->remove(SecurityContext::AUTHENTICATION_ERROR);
         }
-        
+
         //if bad credentials, show a nice message 
         $message = '';
         if ($error) {
