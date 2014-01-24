@@ -29,10 +29,14 @@ class ModulesController extends Controller
                 'login' => $usr->getUsername(),
                 'pass'  => $usr->getPassword(),
             );
-        if ($adult) {
-            return $this->container->get('templating')->renderResponse('ApplicationSonataUserBundle::modules.html.twig', $params);
-        } else {
-            return $this->container->get('templating')->renderResponse('ApplicationSonataUserBundle::modules_kids.html.twig', $params);
-        }
+        
+        $template = ($adult) ? 'modules' : 'modules_kids';
+
+        return $this->container
+            ->get('templating')
+            ->renderResponse(
+                'ApplicationSonataUserBundle::' . $template . '.html.twig', 
+                $params
+            );
     }
 }
