@@ -27,28 +27,32 @@
                     </div>
                     <div class="span6">
                         <!--LLama al logotipo -->
-                        <div id="logo"><a href="/index.php"  > <img title="Learning ICPNA - My campus" src="{{ asset('bundles/applicationsubscriber/images/header-logo.png') }}" alt="Learning ICPNA - My campus"  /></a></div>
-                    </div>
-                    <div class="span3">
+                        <div id="logo">
+                            <img title="Learning ICPNA - My campus" src="{{ asset('bundles/applicationsubscriber/images/header-logo.png') }}" alt="Learning ICPNA - My campus"  />
+                        </div>
+                    </div> 
+                    <!--div class="span3">
 
                         <div class="user-profile-block">
                             <div id='cssmenu'>
                                 <ul>
                                     <li class='has-sub'><a href='#'><span>
                       <img src="/main/img/unknown.jpg" class="user-pic" />
-                      <span class="welcome">Bienvenido</span><br />
-                      <span class="username">Samuel Rodriguez</span></span></a>
+                      <span class="welcome">Welcome</span><br />
+                      <span class="username">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}{{ trans({'%username%': app.user.username}, 'FOSUserBundle') }}</span></a>
                                         <ul>
-                                            <li class="home"><a href='/main/social/home.php'><span>Perfil</span></a></li>
-                                            <li class="email"><a href='/main/messages/inbox.php?f=social'><span>Buzón</span></a></li>
-                                            <li class="edit"><a href='/main/auth/profile.php'><span>Editar perfil</span></a></li>
-                                            <li class="close"><a href='/index.php?logout=logout&uid=1'><span>Salir</span></a></li>
+                                            <li class="home"><a href='/main/social/home.php'><span>Profile</span></a></li>
+                                            <li class="email"><a href='/main/messages/inbox.php?f=social'><span>Inbox</span></a></li>
+                                            <li class="edit"><a href='/main/auth/profile.php'><span>Edit profile</span></a></li>
+                                            <li class="close"><a href="{{ path('logout') }}">
+                                                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                            </a></li>
                                         </ul>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </div-->
                 </div>
 
                 <!-- END OF USER PROFILE BLOCK -->
