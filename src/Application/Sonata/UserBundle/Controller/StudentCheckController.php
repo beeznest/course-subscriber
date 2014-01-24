@@ -23,7 +23,7 @@ class StudentCheckController extends Controller
     public function __construct()
     {
         //Get user
-        //@TODO this is not working
+        //@TODO this is not working, WHYYYYY
         //@TODO can we do this nicer?
         #$this->usr = $this->get('security.context')->getToken()->getUser();
     }
@@ -175,11 +175,4 @@ class StudentCheckController extends Controller
             )
         );
     }
-    
-    /*public function loginCheckAction()
-    {
-        $content = $this->renderView('ApplicationSonataUserBundle::student_login.html.twig');
-        return new Response($content);
-    }*/
- 
 }
