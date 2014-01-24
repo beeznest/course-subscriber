@@ -162,6 +162,8 @@ class StudentCheckController extends Controller
         } else {
             $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
             $session->remove(SecurityContext::AUTHENTICATION_ERROR);
+            //we dont whant   
+            $error = 'El usuario y/o contraseña no son correctos, intente de nuevo.';
         }
 
         return $this->render(
