@@ -216,6 +216,7 @@ class Student implements UserInterface
     {
         return $this->salt = $salt;
     }
+    
     /**
      * @param UserInterface $account
      * @return bool

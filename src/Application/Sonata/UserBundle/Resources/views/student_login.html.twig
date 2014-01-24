@@ -21,12 +21,13 @@
 
             <div class="logo-ICPNA-login"><img src="{{ asset('bundles/applicationsubscriber/images/logo-ICPNA.png') }} "/></div>
             <div id="form_wrapper" class="form_wrapper">
-                {% if error %}
-                    <div>{{ error.message }}</div>
-                {% endif %}
+
 
                 <form action="{{ path('login_check') }}" method="post" class="login active">
                     <h3>Ingresar</h3>
+                    {% if error %}
+                        <div>{{ error.message }}</div>
+                    {% endif %}
                     <div>
                         <label for="username">Usuario:</label>
                         <input type="text" id="username" name="_username" value="{{ last_username }}" />
