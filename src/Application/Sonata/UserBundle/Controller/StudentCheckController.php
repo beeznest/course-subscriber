@@ -159,19 +159,21 @@ class StudentCheckController extends Controller
             $error = $request->attributes->get(
                 SecurityContext::AUTHENTICATION_ERROR
             );
+            error_log(__LINE__);
         } else {
             $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
             $session->remove(SecurityContext::AUTHENTICATION_ERROR);
-            //we dont whant   
-            $error = 'El usuario y/o contraseña no son correctos, intente de nuevo.';
         }
-
+        //if bad credentials, show a nice message 
+        if ($error) {
+            $message = ($error->getMessage() == 'Bad credentials') ? 'El usuario y/o contraseña no son correctos, intente de nuevo.' : '';
+        }
         return $this->render(
             'ApplicationSonataUserBundle::student_login.html.twig',
             array(
                 // last username entered by the user
                 'last_username' => $session->get(SecurityContext::LAST_USERNAME),
-                'error'         => $error,
+                'error'         => $message,
             )
         );
     }
