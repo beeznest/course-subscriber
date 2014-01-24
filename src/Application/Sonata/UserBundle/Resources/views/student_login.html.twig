@@ -1,9 +1,7 @@
 {% extends "ApplicationSonataUserBundle::layout.html.twig" %}
 
 {% block user_login %}
-    {% if error %}
-        <div class="alert alert-danger alert-error">{{ error|trans({}, 'FOSUserBundle') }}</div>
-    {% endif %}
+
 
     <!--h1>{{ 'title_user_authentication'|trans({}, 'SonataUserBundle') }}</h1-->
 
@@ -26,8 +24,14 @@
                 <form action="{{ path('login_check') }}" method="post" class="login active">
                     <h3>Ingresar</h3>
                     {% if error %}
+                        <div class="alert alert-danger alert-error">
+                            {{ error|trans({}, 'FOSUserBundle') }}
+                        </div>
+                    {% endif %}
+                    {% if error %}
                         <div>{{ error.message }}</div>
                     {% endif %}
+
                     <div>
                         <label for="username">Usuario:</label>
                         <input type="text" id="username" name="_username" value="{{ last_username }}" />
