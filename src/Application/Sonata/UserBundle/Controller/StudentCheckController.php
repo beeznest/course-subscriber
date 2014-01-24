@@ -25,7 +25,7 @@ class StudentCheckController extends Controller
         //Get user
         //@TODO this is not working, WHYYYYY
         //@TODO can we do this nicer?
-        #$this->usr = $this->get('security.context')->getToken()->getUser();
+        #$this->usr = $this->getUser();
     }
 
     /**
