@@ -93,11 +93,17 @@ class Registration
         $this->group = $group;
     }
 
+    /**
+     * @param Lms $lms
+     */
     public function setLms($lms)
     {
         $this->lms = $lms;
     }
 
+    /**
+     * @return Lms
+     */
     public function getLms()
     {
         return $this->lms;

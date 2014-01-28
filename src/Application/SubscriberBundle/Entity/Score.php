@@ -24,9 +24,9 @@ class Score
     /**
      * @var integer
      *
-     * @ORM\Column(name="subscription_id", type="integer", precision=0, scale=0, nullable=true, unique=false)
+     * @ORM\Column(name="session_id", type="integer", precision=0, scale=0, nullable=true, unique=false)
      */
-    private $subscriptionId;
+    private $sessionId;
 
     /**
      * @var integer
@@ -102,26 +102,26 @@ class Score
     }
 
     /**
-     * Set subscriptionId
+     * Set sessionId
      *
-     * @param integer $subscriptionId
+     * @param integer $sessionId
      * @return Score
      */
-    public function setSubscriptionId($subscriptionId)
+    public function setSessionId($sessionId)
     {
-        $this->subscriptionId = $subscriptionId;
+        $this->sessionId = $sessionId;
 
         return $this;
     }
 
     /**
-     * Get subscriptionId
+     * Get sessionId
      *
      * @return integer
      */
-    public function getSubscriptionId()
+    public function getSessionId()
     {
-        return $this->subscriptionId;
+        return $this->sessionId;
     }
 
     /**

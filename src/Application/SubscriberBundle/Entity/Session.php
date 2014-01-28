@@ -31,6 +31,13 @@ class Session
     /**
      * @var integer
      *
+     * @ORM\Column(name="student_id", type="integer", precision=0, scale=0, nullable=true, unique=false)
+     */
+    private $studentId;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="teacher_id", type="integer", precision=0, scale=0, nullable=true, unique=false)
      */
     private $teacherId;
@@ -57,6 +64,13 @@ class Session
     private $status;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="total_score", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
+     */
+    private $totalScore;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime", precision=0, scale=0, nullable=false, unique=false)
@@ -75,6 +89,16 @@ class Session
     public function __construct()
     {
         $this->createdAt = new \DateTime("now");
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**
@@ -102,13 +126,19 @@ class Session
     }
 
     /**
-     * Get id
-     *
-     * @return integer
+     * @return Student
      */
-    public function getId()
+    public function getStudent()
     {
-        return $this->id;
+        return $this->student;
+    }
+
+    /**
+     * @param Student $student
+     */
+    public function setStudent($student)
+    {
+        $this->student = $student;
     }
 
     /**
@@ -224,6 +254,52 @@ class Session
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set totalScore
+     *
+     * @param string $totalScore
+     * @return Subscription
+     */
+    public function setTotalScore($totalScore)
+    {
+        $this->totalScore = $totalScore;
+
+        return $this;
+    }
+
+    /**
+     * Get totalScore
+     *
+     * @return string
+     */
+    public function getTotalScore()
+    {
+        return $this->totalScore;
+    }
+
+    /**
+     * Set studentId
+     *
+     * @param integer $studentId
+     * @return Session
+     */
+    public function setStudentId($studentId)
+    {
+        $this->studentId = $studentId;
+
+        return $this;
+    }
+
+    /**
+     * Get studentId
+     *
+     * @return integer
+     */
+    public function getStudentId()
+    {
+        return $this->studentId;
     }
 
     /**

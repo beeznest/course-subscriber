@@ -29,20 +29,6 @@ class Subscription
     private $studentId;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="session_id", type="integer", precision=0, scale=0, nullable=true, unique=false)
-     */
-    private $sessionId;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="total_score", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
-     */
-    private $totalScore;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="status", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
@@ -57,17 +43,35 @@ class Subscription
     private $createdAt;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="invoiced_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
+     */
+    private $invoicedAt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="paid", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
+     */
+    private $paid;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="reason_decline", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
+     */
+    private $reasonDecline;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Student")
      * @ORM\JoinColumn(name="student_id", referencedColumnName="id")
      */
     private $student;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Session")
-     * @ORM\JoinColumn(name="session_id", referencedColumnName="id")
+     *
      */
-    private $session;
-
     public function __construct()
     {
         $this->createdAt = new \DateTime("now");
@@ -78,7 +82,7 @@ class Subscription
      */
     public function __toString()
     {
-        return $this->getTotalScore();
+        return $this->getStatus();
     }
 
     /**
@@ -95,22 +99,6 @@ class Subscription
     public function setStudent($student)
     {
         $this->student = $student;
-    }
-
-    /**
-     * @return Session
-     */
-    public function getSession()
-    {
-        return $this->session;
-    }
-
-    /**
-     * @param Session $session
-     */
-    public function setSession($session)
-    {
-        $this->session = $session;
     }
 
     /**
@@ -144,52 +132,6 @@ class Subscription
     public function getStudentId()
     {
         return $this->studentId;
-    }
-
-    /**
-     * Set sessionId
-     *
-     * @param integer $sessionId
-     * @return Subscription
-     */
-    public function setSessionId($sessionId)
-    {
-        $this->sessionId = $sessionId;
-
-        return $this;
-    }
-
-    /**
-     * Get sessionId
-     *
-     * @return integer
-     */
-    public function getSessionId()
-    {
-        return $this->sessionId;
-    }
-
-    /**
-     * Set totalScore
-     *
-     * @param string $totalScore
-     * @return Subscription
-     */
-    public function setTotalScore($totalScore)
-    {
-        $this->totalScore = $totalScore;
-
-        return $this;
-    }
-
-    /**
-     * Get totalScore
-     *
-     * @return string
-     */
-    public function getTotalScore()
-    {
-        return $this->totalScore;
     }
 
     /**
@@ -237,4 +179,74 @@ class Subscription
     {
         return $this->createdAt;
     }
+
+    /**
+     * Set invoicedAt
+     *
+     * @param integer $invoicedAt
+     * @return Subscription
+     */
+    public function setInvoicedAt($invoicedAt)
+    {
+        $this->invoicedAt = $invoicedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get invoicedAt
+     *
+     * @return integer
+     */
+    public function getInvoicedAt()
+    {
+        return $this->invoicedAt;
+    }
+
+    /**
+     * Set paid
+     *
+     * @param integer $paid
+     * @return Subscription
+     */
+    public function setPaid($paid)
+    {
+        $this->paid = $paid;
+
+        return $this;
+    }
+
+    /**
+     * Get invoicedAt
+     *
+     * @return integer
+     */
+    public function getPaid()
+    {
+        return $this->paid;
+    }
+
+    /**
+     * Set reasonDecline
+     *
+     * @param string $reasonDecline
+     * @return Subscription
+     */
+    public function setReasonDecline($reasonDecline)
+    {
+        $this->reasonDecline = $reasonDecline;
+
+        return $this;
+    }
+
+    /**
+     * Get reasonDecline
+     *
+     * @return integer
+     */
+    public function getReasonDecline()
+    {
+        return $this->reasonDecline;
+    }
+
 }

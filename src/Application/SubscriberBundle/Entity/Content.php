@@ -5,12 +5,12 @@ namespace Application\SubscriberBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Concept
+ * Content
  *
- * @ORM\Table(name="concept")
+ * @ORM\Table(name="content")
  * @ORM\Entity
  */
-class Concept
+class Content
 {
     /**
      * @var integer
@@ -29,18 +29,26 @@ class Concept
     private $name;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="status", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
+     * @ORM\Column(name="lms_id", type="integer", precision=0, scale=0, nullable=true, unique=false)
      */
-    private $status;
+    private $lmsId;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="created_at", type="datetime", precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\ManyToOne(targetEntity="Lms")
+     * @ORM\JoinColumn(name="lms_id", referencedColumnName="id")
      */
-    private $createdAt;
+    private $lms;
+
+    /**
+     * @ManyToMany(targetEntity="Course")
+     * @JoinTable(name="content_course",
+     *      joinColumns={@JoinColumn(name="content_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="course_id", referencedColumnName="id")}
+     *      )
+     */
+    private $courses;
 
     /**
      *
@@ -48,6 +56,7 @@ class Concept
     public function __construct()
     {
         $this->createdAt = new \DateTime("now");
+        $this->courses = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -72,7 +81,7 @@ class Concept
      * Set name
      *
      * @param string $name
-     * @return Concept
+     * @return Content
      */
     public function setName($name)
     {
@@ -92,33 +101,49 @@ class Concept
     }
 
     /**
-     * Set status
+     * Set lmsId
      *
-     * @param string $status
-     * @return Concept
+     * @param integer $lmsId
+     * @return Registration
      */
-    public function setStatus($status)
+    public function setLmsId($lmsId)
     {
-        $this->status = $status;
+        $this->lmsId = $lmsId;
 
         return $this;
     }
 
     /**
-     * Get status
+     * Get lmsId
      *
-     * @return string
+     * @return integer
      */
-    public function getStatus()
+    public function getLmsId()
     {
-        return $this->status;
+        return $this->lmsId;
+    }
+
+    /**
+     * @return Lms
+     */
+    public function getLms()
+    {
+        return $this->lms;
+    }
+
+    /**
+     * @param Lms $lms
+     */
+    public function setLms($lms)
+    {
+        $this->lms = $lms;
     }
 
     /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
-     * @return Concept
+     * @return Content
      */
     public function setCreatedAt($createdAt)
     {

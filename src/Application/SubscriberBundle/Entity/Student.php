@@ -5,7 +5,6 @@ namespace Application\SubscriberBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-
 /**
  * Student
  *
@@ -43,7 +42,6 @@ class Student implements UserInterface
      * @ORM\Column(name="lastname", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
      */
     private $lastname;
-
 
     /**
      * @var string
@@ -130,7 +128,7 @@ class Student implements UserInterface
     private $createdAt;
 
     /**
-     * @var stringuse Sonata\UserBundle\Entity\BaseUser as BaseUser;
+     * @var string use Sonata\UserBundle\Entity\BaseUser as BaseUser;
      *
      * @ORM\Column(name="status", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
      */
@@ -153,15 +151,15 @@ class Student implements UserInterface
     /**
      * @var integer
      *
-     * @ORM\Column(name="registration_id", type="integer", precision=0, scale=0, nullable=true, unique=false)
+     * @ORM\Column(name="group_id", type="integer", precision=0, scale=0, nullable=true, unique=false)
      */
-    private $registrationId;
+    private $groupId;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Registration")
-     * @ORM\JoinColumn(name="registration_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Group")
+     * @ORM\JoinColumn(name="group_id", referencedColumnName="id")
      */
-    private $registration;
+    private $group;
 
     /**
      * @var string
@@ -201,17 +199,26 @@ class Student implements UserInterface
         return array('ROLE_STUDENT');
     }
 
+    /**
+     * @return bool
+     */
     public function eraseCredentials()
     {
         return false;
     }
 
-
+    /**
+     * @return null|string
+     */
     public function getSalt()
     {
         return $this->salt;
     }
 
+    /**
+     * @param $salt
+     * @return mixed
+     */
     public function setSalt($salt)
     {
         return $this->salt = $salt;
@@ -231,6 +238,7 @@ class Student implements UserInterface
         }
         return true;
     }
+
     /**
      * @see \Serializable::serialize()
      */
@@ -288,29 +296,29 @@ class Student implements UserInterface
     {
         return true;
     }
+
     /**
      * @return string
      */
     public function __toString()
     {
-
         return $this->getFirstname();
     }
 
     /**
-     * @return Registration
+     * @return Group
      */
-    public function getRegistration()
+    public function getGroup()
     {
-        return $this->registration;
+        return $this->group;
     }
 
     /**
-     * @param Registration $registration
+     * @param Group $group
      */
-    public function setRegistration($registration)
+    public function setGroup($group)
     {
-        $this->registration = $registration;
+        $this->group = $group;
     }
 
     /**
@@ -332,7 +340,6 @@ class Student implements UserInterface
     {
         return $this->terms;
     }
-
 
     /**
      * Set terms
@@ -356,7 +363,6 @@ class Student implements UserInterface
     {
         return $this->adult;
     }
-
 
     /**
      * Set Adult
@@ -397,7 +403,7 @@ class Student implements UserInterface
     /**
      * Set middlename
      *
-     * @param string $firstname
+     * @param string $middlename
      * @return Student
      */
     public function setMiddlename($middlename)
@@ -786,25 +792,25 @@ class Student implements UserInterface
     }
 
     /**
-     * Set registrationId
+     * Set groupId
      *
-     * @param integer $registrationId
+     * @param integer $groupId
      * @return Student
      */
-    public function setRegistrationId($registrationId)
+    public function setGroupId($groupId)
     {
-        $this->registrationId = $registrationId;
+        $this->groupId = $groupId;
 
         return $this;
     }
 
     /**
-     * Get registrationId
+     * Get groupId
      *
      * @return integer
      */
-    public function getRegistrationId()
+    public function getGroupId()
     {
-        return $this->registrationId;
+        return $this->groupId;
     }
 }
