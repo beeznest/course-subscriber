@@ -43,19 +43,6 @@ class Lms
     private $createdAt;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="group_id", type="integer", precision=0, scale=0, nullable=true, unique=false)
-     */
-    private $groupId;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Group")
-     * @ORM\JoinColumn(name="group_id", referencedColumnName="id")
-     */
-    private $group;
-
-    /**
      *
      */
     public function __construct()
@@ -149,45 +136,4 @@ class Lms
     {
         return $this->createdAt;
     }
-
-    /**
-     * Set groupId
-     *
-     * @param integer $groupId
-     * @return Student
-     */
-    public function setGroupId($groupId)
-    {
-        $this->groupId = $groupId;
-
-        return $this;
-    }
-
-    /**
-     * Get groupId
-     *
-     * @return integer
-     */
-    public function getGroupId()
-    {
-        return $this->groupId;
-    }
-
-    /**
-     * @return Group
-     */
-    public function getGroup()
-    {
-        return $this->group;
-    }
-
-    /**
-     * @param Group $group
-     */
-    public function setGroup($group)
-    {
-        $this->group = $group;
-    }
-
-
 }
