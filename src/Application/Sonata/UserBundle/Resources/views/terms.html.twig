@@ -1,14 +1,3 @@
-{#
-
-This file is part of the Sonata package.
-
-(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
-
-For the full copyright and license information, please view the LICENSE
-file that was distributed with this source code.
-
-#}
-
 {% extends "ApplicationSonataUserBundle::layout.html.twig" %}
 
 {% block terms_content %}
@@ -20,7 +9,7 @@ file that was distributed with this source code.
                 <div class="logo-icpna-terminos"> <img src="{{ asset('bundles/applicationsubscriber/images/logo-ICPNA.png') }}"/></div>
                 <div class="terminos-condiciones">
                     {{ form_errors(form) }}
-                    <!-- 		TERMINOS Y CONDICIONES -->
+                    <!-- TERMINOS Y CONDICIONES -->
                     <div class="scroll-terminos">
 
                         <h2>TÉRMINOS Y CONDICIONES</h2>
@@ -99,9 +88,10 @@ file that was distributed with this source code.
                             {{ form_row(form.terms) }}<span>Acepto los términos y condiciones del servicio</span>
 
                         </div>
-                        <div class="boton-continuar"><input type="submit" value="Continuar" class="btn btn-primary btn-lg btn-block fuente-btn"></input></div>
+                        <div class="boton-continuar">
+                            <input type="submit" value="Continuar" class="btn btn-primary btn-lg btn-block fuente-btn"/>
+                        </div>
                     </form>
-
                 </div>
             </div>
         </div>
