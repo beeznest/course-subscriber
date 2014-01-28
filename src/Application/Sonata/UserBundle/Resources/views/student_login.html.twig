@@ -1,8 +1,6 @@
 {% extends "ApplicationSonataUserBundle::layout.html.twig" %}
 
 {% block user_login %}
-
-
     <!--h1>{{ 'title_user_authentication'|trans({}, 'SonataUserBundle') }}</h1-->
 
     <div class="row">
@@ -16,11 +14,8 @@
             </div>
         </div>
         <div class="span6">
-
             <div class="logo-ICPNA-login"><img src="{{ asset('bundles/applicationsubscriber/images/logo-ICPNA.png') }} "/></div>
             <div id="form_wrapper" class="form_wrapper">
-
-
                 <form action="{{ path('login_check') }}" method="post" class="login active">
                     <h3>Ingresar</h3>
                     {% if error %}
@@ -28,10 +23,6 @@
                             {{ error|trans({}, 'FOSUserBundle') }}
                         </div>
                     {% endif %}
-                    {% if error %}
-                        <div>{{ error.message }}</div>
-                    {% endif %}
-
                     <div>
                         <label for="username">Usuario:</label>
                         <input type="text" id="username" name="_username" value="{{ last_username }}" />
@@ -49,7 +40,6 @@
                         <!-- <a href="register.html" rel="register" class="linkform">Aún no tienes una cuenta registrate aquí</a> -->
                         <div class="clear"></div>
                     </div>
-                    
                 </form>
 
                 <!--form class="forgot_password">
@@ -67,7 +57,6 @@
                     </div>
                 </form-->
             </div>
-
         </div>
 <!-- The JavaScript -->
         <!--script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script-->
@@ -112,15 +101,15 @@
                         $currentForm= $form_wrapper.children('form.'+target);
                         //animate the wrapper
                         $form_wrapper.stop()
-                                     .animate({
-                                        width   : $currentForm.data('width') + 'px',
-                                        height  : $currentForm.data('height') + 'px'
-                                     },500,function(){
-                                        //new form gets class active
-                                        $currentForm.addClass('active');
-                                        //show the new form
-                                        $currentForm.fadeIn(400);
-                                     });
+                            .animate({
+                                width   : $currentForm.data('width') + 'px',
+                                height  : $currentForm.data('height') + 'px'
+                            },500,function(){
+                                //new form gets class active
+                                $currentForm.addClass('active');
+                                //show the new form
+                                $currentForm.fadeIn(400);
+                            });
                     });
                     e.preventDefault();
                 });
@@ -139,11 +128,10 @@
                 to the form you want to show
                 */
                 $form_wrapper.find('input[type="submit"]')
-                             .click(function(e){
-                                e.preventDefault();
-                             });    
+                .click(function(e){
+                    e.preventDefault();
+                });
             });
         </script>
-
     </div>
 {% endblock user_login %}

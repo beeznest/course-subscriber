@@ -63,11 +63,17 @@ class Course
     private $phase;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Concept", mappedBy="courses")
+     */
+    private $concepts;
+
+    /**
      *
      */
     public function __construct()
     {
         $this->createdAt = new \DateTime("now");
+        $this->concepts = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function __toString()
@@ -214,5 +220,15 @@ class Course
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getConcepts()
+    {
+        return $this->concepts;
     }
 }

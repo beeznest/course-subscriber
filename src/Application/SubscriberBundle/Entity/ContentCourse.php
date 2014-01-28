@@ -1,10 +1,14 @@
 <?php
-
+/*
+ * No need to create this Entity the Content::$courses variable
+ * already does creates the table via Doctrine.
+ *
+ * */
 namespace Application\SubscriberBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-/**
+/*
  * ContentCourse
  *
  * @ORM\Table(name="content_course")

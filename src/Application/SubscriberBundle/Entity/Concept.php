@@ -5,12 +5,12 @@ namespace Application\SubscriberBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Lms
+ * Concept
  *
- * @ORM\Table(name="lms")
+ * @ORM\Table(name="concept")
  * @ORM\Entity
  */
-class Lms
+class Concept
 {
     /**
      * @var integer
@@ -24,7 +24,7 @@ class Lms
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="name", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
      */
     private $name;
 
@@ -41,19 +41,6 @@ class Lms
      * @ORM\Column(name="created_at", type="datetime", precision=0, scale=0, nullable=false, unique=false)
      */
     private $createdAt;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="group_id", type="integer", precision=0, scale=0, nullable=true, unique=false)
-     */
-    private $groupId;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Group")
-     * @ORM\JoinColumn(name="group_id", referencedColumnName="id")
-     */
-    private $group;
 
     /**
      *
@@ -85,7 +72,7 @@ class Lms
      * Set name
      *
      * @param string $name
-     * @return Lms
+     * @return Concept
      */
     public function setName($name)
     {
@@ -108,7 +95,7 @@ class Lms
      * Set status
      *
      * @param string $status
-     * @return Lms
+     * @return Concept
      */
     public function setStatus($status)
     {
@@ -131,7 +118,7 @@ class Lms
      * Set createdAt
      *
      * @param \DateTime $createdAt
-     * @return Lms
+     * @return Concept
      */
     public function setCreatedAt($createdAt)
     {
@@ -149,45 +136,4 @@ class Lms
     {
         return $this->createdAt;
     }
-
-    /**
-     * Set groupId
-     *
-     * @param integer $groupId
-     * @return Student
-     */
-    public function setGroupId($groupId)
-    {
-        $this->groupId = $groupId;
-
-        return $this;
-    }
-
-    /**
-     * Get groupId
-     *
-     * @return integer
-     */
-    public function getGroupId()
-    {
-        return $this->groupId;
-    }
-
-    /**
-     * @return Group
-     */
-    public function getGroup()
-    {
-        return $this->group;
-    }
-
-    /**
-     * @param Group $group
-     */
-    public function setGroup($group)
-    {
-        $this->group = $group;
-    }
-
-
 }

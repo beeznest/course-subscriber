@@ -221,7 +221,7 @@ class License
      */
     public function getSession()
     {
-        return $this->$session;
+        return $this->session;
     }
 
     /**

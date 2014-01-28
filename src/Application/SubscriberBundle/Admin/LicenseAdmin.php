@@ -9,7 +9,7 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 use Knp\Menu\ItemInterface as MenuItemInterface;
 
-class ScoreAdmin extends Admin
+class LicenseAdmin extends Admin
 {
     /**
      * @param \Sonata\AdminBundle\Show\ShowMapper $showMapper
@@ -19,8 +19,8 @@ class ScoreAdmin extends Admin
     protected function configureShowField(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('score')
-            ->add('status')
+            ->add('extraId')
+            ->add('extraKey')
         ;
     }
 
@@ -33,10 +33,10 @@ class ScoreAdmin extends Admin
     {
         $formMapper
             ->with('General')
-            ->add('score')
-            ->add('status')
-            ->add('concept')
+            ->add('extraId')
+            ->add('extraKey')
             ->add('session')
+            ->add('content')
             ->end()
         ;
     }
@@ -50,8 +50,8 @@ class ScoreAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('id')
-            ->add('score')
-            ->add('status')
+            ->add('extraId')
+            ->add('extraKey')
             ->add('_action', 'actions', array(
                     'actions' => array(
                         'show' => array(),
@@ -70,8 +70,7 @@ class ScoreAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('score')
-            ->add('status')
+            ->add('extraId')
             //->add('tags', null, array('field_options' => array('expanded' => true, 'multiple' => true)))
         ;
     }

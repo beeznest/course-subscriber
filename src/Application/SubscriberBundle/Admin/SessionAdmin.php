@@ -22,6 +22,7 @@ class SessionAdmin extends Admin
             ->add('started_at')
             ->add('finished_at')
             ->add('status')
+            ->add('totalScore')
         ;
     }
 
@@ -34,8 +35,10 @@ class SessionAdmin extends Admin
     {
         $formMapper
             ->with('General')
+            ->add('student')
             ->add('started_at', 'datetime')
             ->add('finished_at', 'datetime')
+            ->add('totalScore')
             ->add('status')
             ->add('course')
             ->end()

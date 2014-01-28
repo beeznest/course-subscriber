@@ -35,6 +35,7 @@ class LmsAdmin extends Admin
             ->with('General')
             ->add('name')
             ->add('status')
+            ->add('group')
             ->end()
         ;
     }

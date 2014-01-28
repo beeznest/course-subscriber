@@ -214,14 +214,7 @@ services:
         class: Application\SubscriberBundle\Admin\StudentAdmin
         tags:
           - { name: sonata.admin, manager_type: orm, group: Students, label: Student, label_translator_strategy: sonata.admin.label.strategy.underscore }
-
         arguments: [null, Application\SubscriberBundle\Entity\Student, ApplicationSubscriberBundle:StudentAdmin]
-
-    application.subscriber.admin.lms:
-        class: Application\SubscriberBundle\Admin\LmsAdmin
-        tags:
-          - { name: sonata.admin, manager_type: orm, group: LMS, label: Lms}
-        arguments: [null, Application\SubscriberBundle\Entity\Lms, ApplicationSubscriberBundle:LmsAdmin]
 
     application.subscriber.admin.group:
         class: Application\SubscriberBundle\Admin\GroupAdmin
@@ -229,11 +222,29 @@ services:
           - { name: sonata.admin, manager_type: orm, group: LMS, label: Group}
         arguments: [null, Application\SubscriberBundle\Entity\Group, ApplicationSubscriberBundle:GroupAdmin]
 
+    application.subscriber.admin.lms:
+        class: Application\SubscriberBundle\Admin\LmsAdmin
+        tags:
+          - { name: sonata.admin, manager_type: orm, group: LMS, label: LMS}
+        arguments: [null, Application\SubscriberBundle\Entity\Lms, ApplicationSubscriberBundle:LmsAdmin]
+
     application.subscriber.admin.registration:
         class: Application\SubscriberBundle\Admin\RegistrationAdmin
         tags:
           - { name: sonata.admin, manager_type: orm, group: LMS, label: LMS registration}
         arguments: [null, Application\SubscriberBundle\Entity\Registration, ApplicationSubscriberBundle:RegistrationAdmin]
+
+    application.subscriber.admin.content:
+            class: Application\SubscriberBundle\Admin\ContentAdmin
+            tags:
+              - { name: sonata.admin, manager_type: orm, group: LMS, label: Content}
+            arguments: [null, Application\SubscriberBundle\Entity\Content, ApplicationSubscriberBundle:ContentAdmin]
+
+    application.subscriber.admin.license:
+        class: Application\SubscriberBundle\Admin\LicenseAdmin
+        tags:
+          - { name: sonata.admin, manager_type: orm, group: LMS, label: License}
+        arguments: [null, Application\SubscriberBundle\Entity\License, ApplicationSubscriberBundle:LicenseAdmin]
 
     application.subscriber.admin.score:
         class: Application\SubscriberBundle\Admin\ScoreAdmin

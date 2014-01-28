@@ -62,6 +62,12 @@ class Score
      */
     private $concept;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Session")
+     * @ORM\JoinColumn(name="session_id", referencedColumnName="id")
+     */
+    private $session;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime("now");
@@ -89,6 +95,22 @@ class Score
     public function setConcept($concept)
     {
         $this->concept = $concept;
+    }
+
+    /**
+     * @return Session
+     */
+    public function getSession()
+    {
+        return $this->session;
+    }
+
+    /**
+     * @param Session $session
+     */
+    public function setSession($session)
+    {
+        $this->session = $session;
     }
 
     /**

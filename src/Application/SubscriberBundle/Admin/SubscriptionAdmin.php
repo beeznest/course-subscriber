@@ -34,9 +34,10 @@ class SubscriptionAdmin extends Admin
         $formMapper
             ->with('General')
             ->add('student')
-            ->add('session')
             ->add('status')
-            ->add('total_score', 'text')
+            ->add('invoicedAt', 'datetime')
+            ->add('paid')
+            ->add('reasonDecline')
             ->end()
         ;
     }
@@ -51,7 +52,6 @@ class SubscriptionAdmin extends Admin
         $listMapper
             ->addIdentifier('id')
             ->add('status')
-            ->add('total_score')
             ->add('_action', 'actions', array(
                     'actions' => array(
                         'show' => array(),

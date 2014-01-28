@@ -42,10 +42,10 @@ class Content
     private $lms;
 
     /**
-     * @ManyToMany(targetEntity="Course")
-     * @JoinTable(name="content_course",
-     *      joinColumns={@JoinColumn(name="content_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="course_id", referencedColumnName="id")}
+     * @ORM\ManyToMany(targetEntity="Course")
+     * @ORM\JoinTable(name="content_course",
+     *      joinColumns={@ORM\JoinColumn(name="content_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="course_id", referencedColumnName="id")}
      *      )
      */
     private $courses;
@@ -160,5 +160,15 @@ class Content
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getCourses()
+    {
+        return $this->courses;
     }
 }

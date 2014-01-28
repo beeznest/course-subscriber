@@ -84,6 +84,12 @@ class Session
     private $course;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Student")
+     * @ORM\JoinColumn(name="student_id", referencedColumnName="id")
+     */
+    private $student;
+
+    /**
      *
      */
     public function __construct()
@@ -106,7 +112,7 @@ class Session
      */
     public function __toString()
     {
-        return $this->getStatus();
+        return (string)$this->getId();
     }
 
     /**
