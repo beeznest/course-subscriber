@@ -7,8 +7,6 @@ security:
             id: fos_user.user_manager
         students:
             entity: { class:  ApplicationSubscriberBundle:Student, property: username }
-
-
     acl:
         connection: default
 
@@ -50,6 +48,7 @@ security:
                 use_forward:    false
                 check_path:     /admin/login_check
                 failure_path:   null
+                default_target_path: /admin/dashboard
             logout:
                 path:           /admin/logout
             anonymous:    true
