@@ -77,6 +77,14 @@ class License
     }
 
     /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getId();
+    }
+
+    /**
      * Get id
      *
      * @return integer
